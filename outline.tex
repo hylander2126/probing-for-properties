@@ -1,0 +1,457 @@
+%% ============================================================
+%% JOURNAL 2026 --- PAPER OUTLINE (v2)
+%%
+%% Audience: Jing and Cagdas. Purpose: agree on the paper's spine,
+%% contributions, scope, and experiment plan before prose is written.
+%%
+%%   \sh{...}   orange -- Steven's open item / needs experimental check
+%%   \decision{...}  red    -- decision requested
+%% ============================================================
+
+\documentclass[10pt, conference]{IEEEtran}
+\def\IEEEtitletopspace{18pt}
+
+\makeatletter
+\pdfminorversion=4
+\usepackage[margin=0.75in]{geometry}
+\usepackage{ifpdf}
+\usepackage{cite}
+\bibliographystyle{unsrt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+\else
+\fi
+\usepackage{upgreek}
+\usepackage{dblfloatfix}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{booktabs}
+\newcolumntype{R}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{float}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
+\hypersetup{colorlinks=true, linkcolor=blue, filecolor=magenta,
+            urlcolor=cyan, citecolor=cyan}
+\IEEEoverridecommandlockouts
+\setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
+
+\newcommand{\cdo}[1]{\textcolor{red}{CDO: #1}}
+\newcommand{\jx}[1]{\textcolor{blue}{JX: #1}}
+\newcommand{\sh}[1]{\textcolor{orange!90!black}{\textbf{SH:} #1}}
+\newcommand{\decision}[1]{\textcolor{red!80!black}{\textbf{Decision:} #1}}
+
+% \newcommand{\ok}{\textcolor{green!50!black}{\small written}}
+\newcommand{\dat}{\textcolor{orange!85!black}{\small needs data}}
+\newcommand{\fut}{\textcolor{gray}{\small future work}}
+
+\newtcolorbox{keybox}[1]{colback=black!3, colframe=black!40,
+  fonttitle=\bfseries\footnotesize, title={#1}, boxrule=0.5pt,
+  left=5pt, right=5pt, top=4pt, bottom=4pt, fontupper=\footnotesize}
+
+\newtcolorbox{decbox}[1]{colback=red!3, colframe=red!50!black,
+  fonttitle=\bfseries\footnotesize, title={#1}, boxrule=0.6pt,
+  left=5pt, right=5pt, top=4pt, bottom=4pt, fontupper=\footnotesize}
+
+\renewcommand\IEEEkeywordsname{Keywords}
+
+% --- title candidates -----------------------------------------
+%  (a) Probing for Properties: Certified Non-Prehensile Estimation of
+%      Mass, Center of Mass, and Friction, and Their Use in Manipulation
+%  (b) Where to Touch, How Hard, and How Far: A Unified Non-Prehensile
+%      Framework for Estimating and Acting on Unknown Physical Properties
+
+\title{\LARGE \bf Journal 2026 --- Paper Outline\\[2pt]
+\large Probing for Properties: Certified Non-Prehensile Estimation of\\
+Mass, Center of Mass, and Friction, and Their Use in Manipulation}
+
+\begin{document}
+
+\author{Steven M. Hyland, Jing Xiao, and Cagdas D. Onal\\
+\normalsize Worcester Polytechnic Institute}
+
+\maketitle
+
+%% ==============================================================
+\section{Introduction}
+%% ==============================================================
+
+This is a planning document to catalogue the paper's organizing idea, its contributions, its scope, and its experiment plan, so we don't have to revisit the structure later.
+
+This paper answers the question about performing nonprehensile estimation for uncharacterized objects: where to place the contact, which tipping mode will actually work, how hard to press and how far to tip without losing control of the object, and the validation task that is improved from estimating the parameters.
+
+\begin{decbox}{Decisions we need from you}
+\begin{enumerate}[leftmargin=*, itemsep=2pt, label=\arabic*.]
+  \item \textbf{Forward tipping as a full mode, and how it is chosen.}
+        Forward tipping is preferred; the robot moves to press-and-pull
+        when the base is too rounded, or when the push nears the measured
+        sliding force before tipping begins. Does this match how you see
+        the two modes? Forward tipping rotates about the far edge, which a
+        fixed RealSense camera on the opposite side of the object observes.
+  \item \textbf{Three contributions plus the validation task.} The split
+        is in Table~\ref{tab:contrib}; is anything worth demoting?
+  \item \textbf{Uncertainty.} We propagate measurement uncertainty
+        through the NLS estimator into the parameter estimates, and from
+        there into the shove task, and drop the more speculative idea of
+        continuously adjusting the safety threshold by the running
+        covariance.
+  \item \textbf{How many objects?} This sets fabrication lead time and
+        needs settling soon.
+\end{enumerate}
+\end{decbox}
+
+%% ==============================================================
+\section{Contributions}
+%% ==============================================================
+
+\begin{keybox}{The claim, in one sentence}
+A robot can decide where to touch an unknown object, which non-prehensile
+primitive will work on it, and how far it can safely drive that
+primitive, using only a point cloud and a wrench signal, with no shape
+model and nothing learned --- and the parameters it recovers this way are
+accurate enough to plan a dynamic task whose failure modes are predicted
+in advance.
+\end{keybox}
+
+\begin{table}[H]
+\centering
+\caption{The four pieces of the paper and what backs each one.}
+\label{tab:contrib}
+\footnotesize
+\begin{tabular}{@{}R{0.4cm} R{3.25cm} R{2.85cm} R{0.9cm}@{}}
+\toprule
+& \textbf{Contribution} & \textbf{Evidence}\\
+\midrule
+C1 
+& \textbf{Choosing the contact and the tipping mode.} Press and push points become a stated optimization over the point cloud rather than a rule of thumb, and a heuristic chooses forward tipping or press-and-pull from predicted or observed sliding and instability. 
+& Contact-placement ablation against centroid, random, and deliberately poor placements; mode choices against outcomes for every object.\\ \addlinespace
+
+C2 
+& \textbf{Keeping the interaction safe.} One governing hazard, a bounded band of safe press forces, and a margin that permits deliberately tipping past the balance point when the object allows it.
+& Per-tip margin traces; retry and failure rates against the earlier reactive scheme; the safety--accuracy curve.\\ \addlinespace
+
+C3 
+& \textbf{Saying where the method stops working.} Controlled sweeps over center-of-mass offset, base rounding, and base friction (bottom material).
+& Table~\ref{tab:conditions}; a degradation curve and a stated breakdown point on each axis.\\ \addlinespace
+
+V  
+& \textbf{Showing the numbers are worth having.} A dynamic shove into a target region, planned in closed form from the estimates, with a no-tip window and a release condition.
+& Predicted against observed outcomes for four push policies, ten or more trials each. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The ISRR paper named three extensions and left two questions open. This paper delivers four of those five, leaving only object compliance (liquid estimation) for future work.
+
+%% ==============================================================
+\section{Choosing the contact and the tipping mode}
+%% ==============================================================
+
+\subsection{Where to touch}
+
+\noindent\textbf{Press point.} The press point is chosen for two reasons.
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+  \item It adds normal force to keep the object from sliding.
+  \item It pins the pivot edge so the object tips stably.
+\end{enumerate}
+
+
+\begin{table*}[t]
+  \centering
+  \caption{Press point selection objectives and constraints.}
+  \label{tab:presspoint}
+  \footnotesize
+  \begin{tabular}{@{}R{2.8cm} R{1.5cm} R{6.0cm} R{5.2cm}@{}}
+    \toprule
+    \textbf{Term} & \textbf{Role} & \textbf{Net effect / reasoning} & \textbf{When it binds or competes}\\
+    \midrule
+    Close to the pivot edge (horizontally)
+      & Objective
+      & The press adds as little torque against tipping as possible. Loading
+        the pivot edge also pins it, so the object tips stably.
+      & Competes with height on domed or irregular tops (flashlight, heart),
+        where the highest point lies far from the pivot. \\ \addlinespace
+    High on the object
+      & Objective
+      & The pull gains as much tipping leverage as possible once it begins.
+      & Irrelevant on a flat top: every point is at the same height, so the
+        rule reduces to the point nearest the pivot edge. \\ \addlinespace
+    Inside the observed top surface, with margin
+      & Constraint
+      & The margin absorbs point-cloud error, so the fingertip does not land
+        off the edge of the object.
+      & Pushes the point inward from the pivot edge, most on noisy or thin
+        tops. \\ \addlinespace
+    Reachable, collision-free approach
+      & Constraint
+      & The fingertip can actually get to the point.
+      & Tall objects or cluttered workspaces. \\ \addlinespace
+    Fingertip holds without slipping
+      & Constraint
+      & The added normal force keeps the object from sliding only if the
+        fingertip itself holds under the pull.
+      & Low fingertip--top-face friction or heavy objects, where the press
+        needed grows large (the monitor). \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+The optimal press point is therefore a \textbf{multi-objective optimization problem} (Table~\ref{tab:presspoint}). It should sit as close to the pivot edge (horizontally, in pull motion direction) as the top surface allows. It should also ideally sit as high on the object as possible. The press then does two jobs at once: the added normal force keeps the object from sliding, and pins the pivot edge to avoid swirling or other rotation.
+
+These goals are subject to some constraints. \sh{ISRR gives these rules without reasoning or validation, Jing raised this gap in the meeting.} For irregular-top objects, such as the soda bottle, the highest point is very far from the pivot, making tipping very difficult. In that case, the press force fights against the tipping/pulling torque.
+
+\sh{Decide how height is traded against distance to the pivot on domed
+tops.}
+
+\medskip\noindent\textbf{Planar Push point.} The sliding push point is the lowest point the fingertip can reach freely, as in ISRR. We do not care if the object swirls at this moment, so pushing through the CoM planar projection is not expressely required. Only certain very tall, high friction objects will be unable to slide and will \textit{exclusively tip}.
+
+\medskip\noindent\textbf{Forward Tip point.}
+The forward tipping (pushing) point is chosen as high on the object as possible to maximize tipping leverage. The point should be on a face whose inwards normal passes \textit{near or through} the planar CoM projection. This point should also have a corresponding \textit{``nice''} tipping edge on the opposite side of the object, like a line pivot.
+
+The far pivot edge is observed by a fixed RealSense camera on the opposite side of the object.
+
+\subsection{Which mode to use}
+
+The two modes are not a main method and a fallback; they serve different purposes. Press-and-pull is for objects that would slide or tip unstably on their own, since the press prevents the sliding and pins the pivot. Forward tipping is for objects that press-and-pull suits poorly: those with a poor top contact, and those heavy enough that the fingertip cannot hold the pull without slipping. \sh{The monitor is the clearest example; it needed a large press just to keep the fingertip from slipping, but tips very readily otherwise.}
+
+Where both would work, we should choose forward tipping for its simplicity, unless instability is observed. The robot decides with a heuristic in three steps.
+
+\begin{enumerate}[leftmargin=*, itemsep=2pt]
+  \item \textbf{Predict instability from base roundness.} Judged from point cloud prior to contact. A rounded base lets the pivot roll and the object swirl. In IROS (ArXiv) paper, the flashlight swirled late in the tip. Instability therefore should be predicted: a base more round than some threshold should be tipped by the press-and-pull. The threshold comes from the fillet sweep.
+  \item \textbf{Catch sliding before it happens.} The planar push measures the force needed to slide the object, which represents coupled friction and mass ($\mu*m*g$). For a horizontal push, that same force is the most a forward-tipping push can apply before the object slides. If during forward tipping, the measured force exceeds this limit, sliding is detected. In this case, the robot should switch to press-and-pull.
+  \item \textbf{Check that press-and-pull is usable.} The most important factor is whether the press point is near the pivot. For objects where the only press point is far inside the support polygon, the press force generates a large moment that resists tipping. Selecting a lower press point is not always feasible, and too low would require a very large pull force. These two heuristics fight each other. The experiments intentionally include challenging everyday objects to test the limits of the method.
+\end{enumerate}
+
+%% ==============================================================
+\section{Scope}
+%% ==============================================================
+
+\begin{keybox}{Included}
+Rigid and mildly compliant objects, as in ISRR, where the monitor flexed visibly and still estimated well. A single high-friction rubber fingertip. Fixed RealSense cameras, including one on the opposite side of the object to observe the far pivot edge. Flat or rounded bases up to a characterized radius. Estimation is quasistatic;
+the only dynamic motion is the validation task.
+\end{keybox}
+
+\begin{keybox}{Excluded}
+\begin{itemize}[leftmargin=*, itemsep=1pt]
+  \item \textbf{Liquids and partly filled containers.} The center of mass moves during tipping, so the assumption the whole analysis rests on fails outright. Future work \sh{container shape and size would have to be understood first.}
+  \item \textbf{How much compliance is tolerable.} Assumed rather than measured, and left to future work.
+  \item \textbf{Strongly deformable or articulated objects.}
+  \item \textbf{Dual-contact fingertip or tactile sensing.} Adds unnecessary complexity. Future work.
+  \item \textbf{The planar CoM as a contribution.} It comes from our earlier pushing work and is cited, not re-derived. We demonstrate the full pipeline end to end on a single object and note that the rest follow identically.
+  \item \textbf{Anything learned.} The method is closed-form throughout, which is a deliberate position and is restated in the conclusion.
+\end{itemize}
+\end{keybox}
+
+%% ==============================================================
+\section{Plan}
+%% ==============================================================
+
+\begin{table*}[t]
+\centering
+\caption{The five workstreams, what each produces, and what it depends on.}
+\label{tab:plan}
+\footnotesize
+\begin{tabular}{@{}R{0.4cm} R{3.0cm} R{6.0cm} R{4.2cm} R{1.6cm}@{}}
+\toprule
+& \textbf{Workstream} & \textbf{Deliverables} & \textbf{Depends on}\\
+\midrule
+A & Formalization and guarantees 
+  & Press and push point optimization; the mode heuristic with its thresholds; the slip margin for press-and-pull; uncertainty propagation from measurements through the NLS estimator.
+  & Nothing; comes first.\\ \addlinespace
+B & Experimental validation
+  & The five studies in Table~\ref{tab:conditions}; the expanded object
+    set; mode choice for every object.
+  & A for thresholds and rules; object count decision for fabrication.\\ \addlinespace
+C & Data analysis and synthesis
+  & Degradation curves and breakdown points; the safety--accuracy curve;
+    the mode-choice summary; the named hard case.
+  & B.\\ \addlinespace
+D & Validation task (the shove)
+  & Formulation carried forward; hardware traces for every push policy;
+    task success against parameter error propagated from the estimator.
+  & Estimates from B; formulation already drafted.\\ \addlinespace
+E & Writing
+  & Every section of the paper, the three new figures, and the
+    reshot figures.
+  & Runs alongside A--D; results sections wait on C and D.\\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+%% --------------------------------------------------------------
+\subsection{Formalization, methodology, and guarantees}
+%% --------------------------------------------------------------
+
+This is the paper's main new technical content and gates the experiments.
+
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item \textbf{Contact selection.} State the press point as the optimization in Table~\ref{tab:presspoint}, and the forward-tipping push point as its counterpart. \sh{Decide how height trades against distance to the pivot on domed tops like the soda bottle or similar.}
+  \item \textbf{Mode choice.} Formalize the three-step heuristic: the roundness measure and its threshold, the sliding limit, and the press-and-pull usability check. \sh{This should be a `pipeline' or `flowchart' figure.}
+  \item \textbf{Safety guarantees.} Press-and-pull: the predictive slip margin, corrected within a single tip rather than after a failed one, once the sliding force is known and mass settles early in the pull. Rename the new margin $\eta_{\mathrm{slip}}$ so that $\eta_{\mathrm{safety}}$ keeps its ISRR/IROS meaning. Forward tipping: keep the earlier stopping rule, halting at a fraction of the peak push force before the balance point, and state why only press-and-pull can cross that point safely.
+  \item \textbf{Far pivot edge.} Observed by a fixed RealSense camera on the opposite side of the object.
+  \item \textbf{Uncertainty.} Propagate measurement uncertainty (wrench and point cloud) through the NLS estimator into the parameter estimates, and from there into the shove task. \sh{At the task end this will likely be something like: given a desired `trajectory smoothness' threshold (minimal wobbling/chattering), how `wrong' can the shove contact position be?}
+\end{itemize}
+
+%% --------------------------------------------------------------
+\subsection{Experimental validation}
+%% --------------------------------------------------------------
+
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item \textbf{Condition studies.} One study per row of Table~\ref{tab:conditions}: base friction (bottom material), fingertip friction, base rounding, center-of-mass offset, and contact placement. \decision{N Trials per object/configuration?}
+  \item \textbf{Objects.} Parameterized object sweeps already fabricated. Decide and gather the everyday objects \decision{which everyday objects exactly? How many?}
+  \item \textbf{Mode choice.} Run the heuristic on every object and record which mode it picked, which step decided, and whether the choice held up. \decision{Autonomous tipping mode selection for each sweep configuration? Or only for the everyday objects?}
+  \item \textbf{Safety comparison.} Retry and failure rates for the predictive margin against the earlier reactive scheme, including at least one tip driven cleanly past the balance point. Small study... try more and less aggressive margins, similar to IROS work, but with press-pull-tipping.
+  \item \textbf{Base-friction sweep.} Same geometry and mass, different bottom materials, to characterize the sliding-limit margin.
+\end{itemize}
+
+%% --------------------------------------------------------------
+\subsection{Data analysis and synthesis}
+%% --------------------------------------------------------------
+
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item \textbf{The envelope.} A degradation curve and a stated breakdown point on each swept axis, so the conclusions can give the envelope numerically.
+  \item \textbf{Base roundness threshold.} Set the roundness threshold from the fillet sweep.
+  \item \textbf{Sliding-limit margin.} Set from the base-friction sweep.
+  \item \textbf{Safety--accuracy curve.} Important figure, similar to IROS, but focused on safety vs. accurace. Built from sweeping conservative and liberal margin values.
+  \item \textbf{The hard case.} Demonstrate the pipeline on a light-object which slides and has poor top contact, so the worst case is predicted rather than explained after the fact.
+\end{itemize}
+
+%% --------------------------------------------------------------
+\subsection{Validation task: the shove}
+%% --------------------------------------------------------------
+
+\begin{itemize}[leftmargin=*, itemsep=2pt]
+  \item \textbf{Formulation.} \textcolor{green!50!black}{\small written} The no-tip push-height window, the single intensity parameter, the release condition, and the predicted failure of each uninformed push policy. \decision{What assumptions? Goal region size/distance? Un-shovable objects like monitor?}
+  \item \textbf{Hardware.} \dat{} The smooth sliding trajectory in the ISRR video is simulated. Record real experiments for various objects. Simple objects (box), complex (flashlight), unshovable test (monitor or other that's safe to topple). Four push policies, ten or more trials each.
+  \item \textbf{Error tolerance.} \dat{} Measure task success against the parameter error propagated from the measurements through the NLS estimator. This answers how much uncertainty is allowable.
+\end{itemize}
+
+% %% --------------------------------------------------------------
+% \subsection{Writing}
+% %% --------------------------------------------------------------
+
+% \begin{itemize}[leftmargin=*, itemsep=2pt]
+%   \item \textbf{Introduction.} \textcolor{green!50!black}{\small written} Recenter away from safety: where,
+%         which, and how far are unanswered together, and safety becomes
+%         one contribution rather than the thesis.
+%   \item \textbf{Prior work.} \textcolor{green!50!black}{\small written} Carry forward the ISRR threads and the
+%         safety thread. \sh{Add a short thread on choosing contacts from
+%         partial observations.}
+%   \item \textbf{Background.} Short recap: torque balance, the two onset
+%         thresholds, press-and-pull, the wrench transform, how the
+%         parameters divide between modes. The planar center-of-mass
+%         bisection is cited, not derived.
+%   \item \textbf{Choosing the contact and the mode.} Written from A.
+%   \item \textbf{Keeping the interaction safe.} \textcolor{green!50!black}{\small written} Largely as drafted;
+%         update the framing and add the forward-tipping paragraph from A.
+%   \item \textbf{Experiments and results.} Written from B and C.
+%   \item \textbf{The shove.} \textcolor{green!50!black}{\small written} Stays a full section late in the paper;
+%         add the hardware results from D.
+%   \item \textbf{Conclusions.} \textcolor{green!50!black}{\small written} Recap, the envelope stated numerically,
+%         then future work: liquids, bases beyond the characterized
+%         rounding, the two-contact fingertip, uncertainty in the loop, and
+%         tolerable compliance.
+%   \item \textbf{Figures.} The three new figures (flow diagram, mode-choice
+%         summary, contact geometry) and the reshot object lineup and shove
+%         sequence.
+% \end{itemize}
+
+%% ==============================================================
+\section{Experiments}
+%% ==============================================================
+
+The ISRR paper lists the feasible object set, but does not quantitateively validate/characterize their boundaries. The experiment plan turns each condition, (except rigidity), into one study.
+
+% \begin{table*}[t]
+%   \centering
+%   \caption{Each condition an object has to satisfy becomes one study. The first three rows are conditions ISRR states but never bounds; the last three are questions it defers explicitly or that came out of the meeting.}
+%   \label{tab:conditions}
+%   \footnotesize
+%     \begin{tabular}{@{}R{2.2cm} R{4.6cm} R{4.8cm} R{3.2cm} R{1.3cm}@{}}
+%     \toprule
+%     \textbf{Condition} & \textbf{What is unresolved} & \textbf{The study} & \textbf{What it measures}\\
+%     \midrule
+%     Rigidity & The most easily overstated condition. The monitor flexed visibly and still estimated well, but how much flex is tolerable was never quantified.
+%     & Not studied here; stated as an assumption. 
+%     & --- \\ \addlinespace
+
+%     Slideability & Needed only by the sliding interaction. High-friction objects tip instead of sliding and give up friction. 
+%     & Fixed geometry, varying bottom material: rubber feet, felt, bare plastic, metal. 
+%     & Whether the sliding limit sends each object to the right mode, and how much margin it needs. \\ \addlinespace
+
+%     Fingertip friction & Gates the press and is unknown before contact. It also marks where press-and-pull stops being usable: the monitor needed a large press just to keep the fingertip from slipping.
+%     & Safe press range against object weight and the fingertip and top-face material pair.
+%     & The weight at which the fingertip can no longer hold the pull. \\ \addlinespace
+
+%     \midrule
+%     Base rounding & Explicitly deferred in ISRR, and now also the basis of the instability check.
+%     & Fillet radius from sharp through rounded to fully curved, under both modes.
+%     & The radius at which forward tipping turns unstable, which sets the check's threshold, and the radius beyond which the press can no longer pin the pivot. \\ \addlinespace
+
+%     Center of mass & Named as future work in ISRR. & Swappable internal mass translating the center of mass.
+%     & Error against offset across the identifiable range. \\ \addlinespace
+
+%     Contact placement & A rule of thumb with no ablation behind it.
+%     & Our rule against centroid, random, and deliberately poor placements, far from the pivot or low on the object.
+%     & Tipping success and required press against placement. \\
+%     \bottomrule
+%   \end{tabular}
+% \end{table*}
+
+\subsection{Objects}
+ISRR used four. A journal reviewer will expect something closer to ten--fifteen, and the designed series can supply many of them at once.
+
+\begin{itemize}[leftmargin=*, itemsep=1pt]
+  \item \textbf{Designed, with exact ground truth:} the center-of-mass series, the fillet series, and the base-friction series \sh{new idea} (same geometry and mass, different table friction).
+  \item \textbf{Everyday, with measured ground truth:} the four original objects carried forward for continuity, plus new items that \textbf{ideally are difficult to grasp}, e.g., hammer, sculpture, strange 3D printed object, and similar.
+  \item \textbf{Deliberate failures:} at least one object that violates each condition, so the envelope is shown rather than asserted. \decision{do we want to demonstrate failures?}
+\end{itemize}
+
+
+\subsection{A challenging object}
+The hard case is a light object that prefers to slide and has a poor top contact. It slides, so forward tipping reaches the sliding limit before it tips and the heuristic sends it to press-and-pull. Its top contact is poor, so press-and-pull is also a bad fit. And being light, it produces a small gravitational torque, so the signal being measured is weak against the applied forces. \sh{The journal should name this case up front}, predict it, and demonstrate the pipeline on it. It's better to show a predicted worst case upfront than to explain it after the fact.
+
+%% ==============================================================
+\section{Open questions}
+%% ==============================================================
+
+% \noindent\textbf{Does anything still need a search?} The bisection that finds the planar center of mass stays, cited to the earlier work. On the press side, the predictive margin replaces retrying only if it really does project forward once mass settles early in the pull. The quantities it depends on are unknown before contact, so the honest claim is one tip with correction during it, not zero interactions. \sh{How early does mass settle? The strength of this claim depends on it.} 
+% ^^^ THIS IS NOT IMPORTANT, THE ADAPTIVE SEARCH IS STILL PRESENT, THE DECISION WHICH MODE TO USE IS MORE CRITICAL NOW.
+
+% \medskip\noindent\textbf{How far below the sliding force should the push stop?} The sliding limit assumes a roughly horizontal push, similar friction in the sliding and tipping directions, and some allowance for the gap between the force that starts sliding and the force that sustains it. The margin should be measured rather than assumed, and the bottom-material sweep is the natural place to measure it.
+% ^^^ THIS IS ALSO NOT IMPORTANT. WE JUST SELECT THE MODE. THE WORST CASE IS UNPREDICTED INSTABILITY. WE SHOULD PROBABLY NOT USE THIS MASS BOUNDARY TO DETERMINE THE MODE REACTIVELY. IF SLIDING OCCURS DURING FORWARD TIPPING, THE FORCE NEVER REACHES THE SLIDING LIMIT, AND WE MUST USE PERCEPTION TO DETECT SLIDING ANYWAYS.
+
+\medskip \noindent \textbf{Anything in red above.} N trials, num objects, etc.
+
+\medskip\noindent\textbf{What measure of roundness?} How large of a base radius is considered an 'edge' instead of 'round'? Consider a water bottle vs. a trash can. 
+
+\medskip\noindent\textbf{Can the fingertip limit be predicted?} At present it only shows once the pull starts during adaptive press selection. There is some search problem buried in this adaptive press selection, which might/might not be worth exploring.
+
+\medskip\noindent\textbf{One symbol has to be renamed.} The ISRR paper already uses $\eta_{\mathrm{safety}}$ for the threshold at which the tip stops, defined as a fraction of the peak pull force. The new comprehensive certificate (for press-pull, too) should become $\eta_{\mathrm{slip}}$.
+
+% %% ==============================================================
+% \section{Figures}
+% %% ==============================================================
+
+% Three are new and matter most. \sh{A unified flow diagram} showing the whole method end to end: point cloud, contact points, the sliding interaction, the mode choice and its three steps, the certified tip, the recovered parameters, and the shove that uses them. \jx{this is the diagram you asked for; the existing pipeline figure shows only the two modes.} \sh{A mode-choice summary} for every tested object: which mode the heuristic picked, which step decided it, and whether the choice held up. \sh{A contact geometry figure} showing, on a real point cloud, the press point relative to the pivot edge and its height, and the forward-tipping push point.
+
+% Carried forward and already drawn: the hazard figure, the contact close-up, the object lineup (which needs reshooting with the larger set), the sweeps, the safety--accuracy curve, and the shove sequence. The safety--accuracy curve is the single most important figure in the paper and should include at least one tip driven cleanly past the balance point. The shove sequence must be reshot in hardware.
+
+%% ==============================================================
+\section{This maps nicely onto the dissertation}
+%% ==============================================================
+
+\begin{enumerate}
+  \item \textbf{Planar pushing.} The first two center-of-mass coordinates, no mass, and no friction. Published IROS 2023 / CASE 2025.
+  \item \textbf{Forward tipping.} The third center-of-mass coordinate and the mass, but fails on low-friction and curved bases. ArXiv 2026.
+  \item \textbf{Press-and-pull.} Removes the failure of forward tipping and adds friction. ISRR 2026.
+  \item \textbf{This paper.} Brings all three into one method that chooses the right interaction for each object, keeps that interaction safe, says where the method stops working, and shows the numbers are worth having. This is the journal version of the dissertation chapter.
+\end{enumerate}
+
+\sh{Candidate thesis statement:} \emph{more affordance from less
+information} a robot can recover and then act on an unknown object's mass, center of mass, and friction using only non-prehensile contact, proprioception, and a partial view, with closed-form guarantees at every step.
+
+\end{document}

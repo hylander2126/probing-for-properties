@@ -1,0 +1,268 @@
+\documentclass[10pt, conference]{IEEEtran}
+
+\makeatletter
+\pdfminorversion=4
+\usepackage[margin=0.75in]{geometry}
+\usepackage{ifpdf}
+\usepackage{cite}
+\bibliographystyle{unsrt}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{multirow}
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+\else
+\fi
+\usepackage{upgreek}
+\usepackage{dblfloatfix}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{soul}
+\usepackage{hhline}
+\usepackage{booktabs}
+\usepackage{float}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    citecolor=cyan,
+}
+\IEEEoverridecommandlockouts
+
+\setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
+
+\newcommand{\cdo}[1]{\textcolor{red}{CDO: #1}}
+\newcommand{\jx}[1]{\textcolor{blue}{JX: #1}}
+\newcommand{\sh}[1]{\textcolor{orange}{SH: #1}}
+
+% --- review markup: proposed cuts -----------------------------------------
+% \cut{...}     strikes prose;  \cutmath{...} strikes a display equation
+% \cutwhy{...}  the reason, in gray, beside the struck text
+% Delete these three macros and the struck text once the cuts are accepted.
+\usepackage[normalem]{ulem}
+\newcommand{\cut}[1]{\textcolor{gray}{\sout{#1}}}
+\newsavebox{\cutbox}
+\newcommand{\cutmath}[1]{\textcolor{gray}{%
+  \sbox{\cutbox}{$\displaystyle #1$}%
+  \rlap{\usebox{\cutbox}}\rule[0.45ex]{\wd\cutbox}{0.5pt}}}
+\newcommand{\cutwhy}[1]{{\color{gray}\footnotesize\itshape [#1]}}
+
+\renewcommand\IEEEkeywordsname{Keywords}
+
+\title{\LARGE \bf Probing for Properties}
+
+\begin{document}
+
+\author{Steven M. Hyland, Jing Xiao, and Cagdas D. Onal}
+
+\maketitle
+
+\begin{abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+%% ==============================================
+\section{Introduction} \label{sec:intro}
+%% ==============================================
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/safety_cases.png}
+  \label{fig:hazards}
+\end{figure}
+
+%% ==============================================
+\section{Prior Work} \label{sec:prior}
+%% ==============================================
+
+%% ==============================================
+\section{Background} \label{sec:background}
+%% ==============================================
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/pipeline.png}
+  \label{fig:pipeline}
+\end{figure}
+
+%% ==============================================
+\section{Choosing the Contact and the Mode} \label{sec:contact_mode}
+%% ==============================================
+\subsection{Pull Direction and Press-Point Selection}
+\label{sec:press_point_selection}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.95\textwidth]{figures/contact_selection.png}
+  \caption{Tipping direction and press-point selection.
+  (\textbf{left}) Support-footprint geometry, viewed from above, for representative pivot cases. For a straight-edge pivot, the desired tipping axis $\hat{\mathbf e}$ is aligned with the edge and the pull direction $\hat{\mathbf d}$ is chosen approximately normal to it. For a vertex or locally curved support boundary, contact reduces to a single expected pivot point and $\hat{\mathbf e}$ is taken as the local tangent to the support boundary.
+  (\textbf{right}) Press-point selection on a segmented object point cloud $\mathcal{P}$, shown for the pull direction $\hat{\mathbf d} = \hat{\mathbf d}_{\mathrm{pull}}$. Candidate points are first screened by the surface-normal condition in Eq.~\eqref{eq:press_feasible_set} to reject contacts likely to separate under the commanded pull. For each remaining point, the lever arm $\mathbf r_i$ and resulting moment $\boldsymbol{\tau}_i = \mathbf r_i \times \hat{\mathbf d}$ are evaluated. The selected point $\mathbf p^*$ maximizes the signed moment about the desired tipping axis according to Eq.~\eqref{eq:press_point_selection}. Forward tipping reuses the same construction at $\hat{\mathbf d}_{\mathrm{push}}$ (Section~\ref{sec:forward_tip_selection}).}
+  \label{fig:contact_selection}
+\end{figure*}
+
+The interaction direction is selected from the expected tipping geometry (Fig.~\ref{fig:contact_selection}, left). We write $\hat{\mathbf d}$ for the commanded direction in the support plane, instantiated as the pull direction $\hat{\mathbf d}_{\mathrm{pull}}$ here and as the push direction
+$\hat{\mathbf d}_{\mathrm{push}}$ for forward tipping (Section~\ref{sec:forward_tip_selection}). For an object expected to rotate about a straight tipping edge with unit direction $\hat{\mathbf e}$, $\hat{\mathbf d}$ is chosen approximately normal to the edge and parallel to the support surface. For objects with a locally curved support boundary and a single expected pivot point, $\hat{\mathbf d}$ is instead chosen approximately normal to the local tangent of the support boundary at the pivot. The sign of $\hat{\mathbf d}$ is selected to induce rotation in the desired tipping direction.
+
+Given a segmented object point cloud
+\begin{equation}
+    \mathcal{P} = \{\mathbf p_i\},
+\end{equation}
+
+with an estimated outward surface normal $\mathbf n_i$ associated with each point, candidate contact points are first restricted to surfaces compatible with the commanded direction (Fig.~\ref{fig:contact_selection}, right). The feasible set is defined as
+
+\begin{equation}
+    \mathcal{P}_f(\hat{\mathbf d}) =
+    \left\{
+    \mathbf p_i \in \mathcal{P}
+    \;\middle|\;
+    \hat{\mathbf d}^{T}\mathbf n_i \leq \epsilon_n
+    \right\},
+    \label{eq:press_feasible_set}
+\end{equation}
+where $\epsilon_n$ permits a small outward component while rejecting surfaces for which the commanded motion would strongly promote loss of contact. The screen depends on $\hat{\mathbf d}$ alone, so the same construction serves both interactions.
+
+For each feasible point, let $\mathbf q$ denote a point on the expected tipping edge, or the expected pivot point for a locally curved support boundary, and define the pivot-to-contact vector
+\begin{equation}
+    \mathbf r_i = \mathbf p_i - \mathbf q.
+\end{equation}
+Assuming an applied force with fixed magnitude in direction $\hat{\mathbf d}$, the resulting moment about the pivot is proportional to
+\begin{equation}
+    \boldsymbol{\tau}_i
+    =
+    \mathbf r_i \times \hat{\mathbf d}.
+    \label{eq:press_point_torque}
+\end{equation}
+
+The signed component of this moment about the desired tipping axis defines the contact score
+\begin{equation}
+    S_i(\hat{\mathbf d})
+    =
+    \hat{\mathbf e}^{T}
+    \left(
+    \mathbf r_i \times \hat{\mathbf d}
+    \right).
+    \label{eq:score}
+\end{equation}
+For a straight tipping edge, $\hat{\mathbf e}$ is aligned with the edge; for a locally curved support boundary, it is tangent to the boundary at the expected pivot. The sign of $\hat{\mathbf e}$ is chosen such that positive $S_i(\hat{\mathbf d})$ corresponds to the desired tipping direction.
+
+The contact point is then selected as
+\begin{equation}
+    \boxed{
+    \mathbf p^*(\hat{\mathbf d})
+    =
+    \arg\max_{\mathbf p_i \in \mathcal{P}_f(\hat{\mathbf d})}
+    \hat{\mathbf e}^{T}
+    \left[
+    \left(
+    \mathbf p_i - \mathbf q
+    \right)
+    \times
+    \hat{\mathbf d}
+    \right]
+    }
+    \label{eq:press_point_selection}
+\end{equation}
+so that press-and-pull presses at $\mathbf p^*_{\mathrm{pull}} = \mathbf p^*(\hat{\mathbf d}_{\mathrm{pull}})$, the point marked $\mathbf p^*$ in Fig.~\ref{fig:contact_selection}. This objective favors candidates with a large moment arm perpendicular to the commanded direction while penalizing points that generate moment in the opposing tipping direction. Equivalently, since $\|\boldsymbol{\tau}_i\| \propto \|\mathbf r_i\|\sin\theta_i$, where $\theta_i$ is the angle between $\mathbf r_i$ and $\hat{\mathbf d}$, high-scoring points tend to have large lever arms oriented approximately orthogonal to the commanded direction.
+
+\subsection{Forward-Tipping Contact Selection}
+\label{sec:forward_tip_selection}
+
+Forward tipping is the same selection without the press. The tipping axis $\hat{\mathbf e}$, the pivot $\mathbf q$, the lever arm $\mathbf r_i$, the feasible set \eqref{eq:press_feasible_set}, and the score \eqref{eq:score} all carry over unchanged, evaluated at $\hat{\mathbf d}_{\mathrm{push}}$, so the
+push contact is
+\begin{equation}
+    \boxed{
+    \mathbf p^*_{\mathrm{push}}
+    =
+    \mathbf p^*(\hat{\mathbf d}_{\mathrm{push}})
+    }
+    \label{eq:forward_tip_selection}
+\end{equation}
+The one difference is what maintains contact. The push is compressive, so contact is held by the applied force itself rather than by friction under a separate press, and no contact-maintenance criterion beyond
+\eqref{eq:press_feasible_set} is required; we therefore take $\epsilon_n = 0$ for forward tipping, admitting only faces the push acts into, while press-and-pull tolerates $\epsilon_n > 0$ because the press holds contact.
+
+For an approximately horizontal push, the same lever-arm argument favors higher contact points, recovering the conventional heuristic of pushing near the top of the object to promote tipping.
+
+\subsection{Interaction-Mode Selection}
+\label{sec:mode_selection}
+
+After the object has been observed and a planar push has been performed, the robot selects an initial tipping interaction. Because the object's mass, object--support friction coefficient, and force required to initiate tipping are not known a priori, the initial mode selection is based only on observable support geometry.
+
+The expected tipping pivot is classified as either an extended edge or an isolated point. Forward tipping is selected when the support geometry provides an extended tipping edge, which constrains the instantaneous rotation axis during the interaction. When the expected pivot reduces to a single point, such as at a sharp vertex or along a locally curved support boundary, the press-pull mode is selected.
+
+The initial interaction mode is therefore
+\begin{equation}
+    \boxed{
+    \text{Mode}_0 =
+    \begin{cases}
+        \text{Press-pull}, & \text{isolated-point pivot}, \\[4pt]
+        \text{Forward tip}, & \text{extended-edge pivot}.
+    \end{cases}
+    }
+    \label{eq:mode_selection}
+\end{equation}
+
+The planar sliding force measured before tipping is retained for subsequent physical-property estimation, but is not used to determine the initial tipping mode because it reflects the combined effect of unknown mass and friction. Information obtained during the first tipping interaction may be used to adapt a second interaction in response to observed sliding or pivot instability.
+
+
+%% ==============================================
+\section{Keeping the Interaction Safe} \label{sec:method}
+%% ==============================================
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/zoom.png}
+  \label{fig:zoom}
+\end{figure}
+
+%% ==============================================
+\section{Experiments, Results, and Discussion} \label{sec:results}
+%% ==============================================
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/lineup.png}
+  \label{fig:lineup}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/fig5_sweeps.png}
+  \label{fig:sweeps}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.95\linewidth]{figures/fig6_tradeoff.png}
+  \label{fig:tradeoff}
+\end{figure}
+
+%% ==============================================
+\section{Validation: Parameter-Gated Dynamic Shoving} \label{sec:validation}
+%% ==============================================
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.98\linewidth]{figures/shove_validation.jpg}
+  \\[4pt]
+  \includegraphics[width=0.6\linewidth]{figures/fig7_inset_window.png}
+  \label{fig:shove}
+\end{figure}
+
+%% ==============================================
+\section{Conclusions} \label{sec:conclusion}
+%% ==============================================
+
+% Placeholder citation: keeps the bibliography non-empty while the paper has no
+% \cite commands yet (an empty thebibliography is a LaTeX error). Delete once
+% real citations exist.
+\nocite{hyland_before_2026}
+\bibliography{references.bib}
+
+\end{document}
