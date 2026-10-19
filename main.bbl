@@ -1,8 +1,133 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{mason_mechanics_1986}
+Matthew~T. Mason.
+\newblock Mechanics and {Planning} of {Manipulator} {Pushing} {Operations}.
+\newblock {\em The International Journal of Robotics Research}, 5(3):53--71, September 1986.
+
+\bibitem{bauza_probabilistic_2017}
+Maria Bauza and Alberto Rodriguez.
+\newblock A probabilistic data-driven model for planar pushing.
+\newblock In {\em 2017 {IEEE} {International} {Conference} on {Robotics} and {Automation} ({ICRA})}, pages 3008--3015, Singapore, Singapore, May 2017. IEEE.
+
+\bibitem{hyland_predicting_2023}
+Steven~M. Hyland, Jing Xiao, and Cagdas~D. Onal.
+\newblock Predicting {Center} of {Mass} by {Iterative} {Pushing} for {Object} {Transportation} and {Manipulation}.
+\newblock In {\em 2023 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems} ({IROS})}, pages 1615--1620, Detroit, MI, USA, October 2023. IEEE.
 
 \bibitem{hyland_before_2026}
 Steven~M. Hyland, Jing Xiao, and Cagdas~D. Onal.
 \newblock Before the {Tipping} {Point}: {Force}-{Guided} {Active} {Perception} for {Shape}-{Agnostic} {Estimation} of {3D} {Centers} of {Mass}.
 \newblock In {\em 2026 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems} ({IROS})}, (Under Review)., March 2026.
+
+\bibitem{hyland_onboard_2025}
+Steven~M. Hyland, Jing Xiao, and Cagdas~D. Onal.
+\newblock Onboard {Sensing} and {Pushing} of {Unknown} {Payload} for {CoM} {Estimation} with a {Holonomic} {Mobile} {Robot}.
+\newblock In {\em 2025 {IEEE} 21st {International} {Conference} on {Automation} {Science} and {Engineering} ({CASE})}, pages 2555--2561, Los Angeles, CA, USA, August 2025. IEEE.
+
+\bibitem{atkeson_rigid_1985}
+Chirstopher Atkeson, Chae An, and John Hollerbach.
+\newblock Rigid body load identification for manipulators.
+\newblock In {\em 1985 24th {IEEE} {Conference} on {Decision} and {Control}}, pages 996--1002, Fort Lauderdale, FL, USA, December 1985. IEEE.
+
+\bibitem{khosla_parameter_1985}
+Pradeep Khosla and Takeo Kanade.
+\newblock Parameter identification of robot dynamics.
+\newblock In {\em 1985 24th {IEEE} {Conference} on {Decision} and {Control}}, pages 1754--1760, Fort Lauderdale, FL, USA, December 1985. IEEE.
+
+\bibitem{kubus_-line_2007}
+Daniel Kubus, Torsten Kroger, and Friedrich~M. Wahl.
+\newblock On-line rigid object recognition and pose estimation based on inertial parameters.
+\newblock In {\em 2007 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems}}, pages 1402--1408, San Diego, CA, USA, October 2007. IEEE.
+
+\bibitem{sundaralingam_-hand_2021}
+Balakumar Sundaralingam and Tucker Hermans.
+\newblock In-{Hand} {Object}-{Dynamics} {Inference} {Using} {Tactile} {Fingertips}.
+\newblock {\em IEEE Transactions on Robotics}, 37(4):1115--1126, August 2021.
+
+\bibitem{mavrakis_estimation_2020}
+Nikos Mavrakis and Rustam Stolkin.
+\newblock Estimation and exploitation of objects ’ inertial parameters in robotic grasping and manipulation: {A} survey.
+\newblock {\em Robotics and Autonomous Systems}, 124:103374, February 2020.
+
+\bibitem{lynch_estimating_1993}
+K.M. Lynch.
+\newblock Estimating the friction parameters of pushed objects.
+\newblock In {\em Proceedings of 1993 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems} ({IROS} '93)}, volume~1, pages 186--193, Yokohama, Japan, 1993. IEEE.
+
+\bibitem{heins_force_2024}
+Adam Heins and Angela~P. Schoellig.
+\newblock Force {Push}: {Robust} {Single}-{Point} {Pushing} {With} {Force} {Feedback}.
+\newblock {\em IEEE Robotics and Automation Letters}, 9(8):6856--6863, August 2024.
+
+\bibitem{dutta_push_2023}
+Anirvan Dutta, Etienne Burdet, and Mohsen Kaboli.
+\newblock Push to {Know}! - {Visuo}-{Tactile} {Based} {Active} {Object} {Parameter} {Inference} with {Dual} {Differentiable} {Filtering}.
+\newblock In {\em 2023 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems} ({IROS})}, pages 3137--3144, Detroit, MI, USA, October 2023. IEEE.
+
+\bibitem{kim_online_2025}
+Hajun Kim, Dongyun Kang, Min-Gyu Kim, Gijeong Kim, and Hae-Won Park.
+\newblock Online {Friction} {Coefficient} {Identification} for {Legged} {Robots} on {Slippery} {Terrain} {Using} {Smoothed} {Contact} {Gradients}.
+\newblock {\em IEEE Robotics and Automation Letters}, 10(4):3150--3157, April 2025.
+
+\bibitem{yong_yu_estimation_1999}
+{Yong Yu}, K.~Fukuda, and S.~Tsujio.
+\newblock Estimation of mass and center of mass of graspless and shape-unknown object.
+\newblock In {\em Proceedings 1999 {IEEE} {International} {Conference} on {Robotics} and {Automation} ({Cat}. {No}.{99CH36288C})}, volume~4, pages 2893--2898, Detroit, MI, USA, 1999. IEEE.
+
+\bibitem{yong_yu_estimation_2001}
+Yong Yu, T.~Kiyokawa, and S.~Tsujio.
+\newblock Estimation of mass and center of mass of unknown cylinder-like object using passing-{CM} {Lines}.
+\newblock In {\em Proceedings 2001 {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems}. {Expanding} the {Societal} {Role} of {Robotics} in the the {Next} {Millennium} ({Cat}. {No}.{01CH37180})}, volume~3, pages 1788--1793, Maui, HI, USA, 2001. IEEE.
+
+\bibitem{yong_yu_estimation_2005}
+{Yong Yu}, T.~Arima, and S.~Tsujio.
+\newblock Estimation of {Object} {Inertia} {Parameters} on {Robot} {Pushing} {Operation}.
+\newblock In {\em Proceedings of the 2005 {IEEE} {International} {Conference} on {Robotics} and {Automation}}, pages 1657--1662, Barcelona, Spain, 2005. IEEE.
+
+\bibitem{heins_robust_2025}
+Adam Heins and Angela~P. Schoellig.
+\newblock Robust {Nonprehensile} {Object} {Transportation} {With} {Uncertain} {Inertial} {Parameters}.
+\newblock {\em IEEE Robotics and Automation Letters}, 10(5):4492--4499, May 2025.
+
+\bibitem{selvaggio_non-prehensile_2023}
+Mario Selvaggio, Akash Garg, Fabio Ruggiero, Giuseppe Oriolo, and Bruno Siciliano.
+\newblock Non-{Prehensile} {Object} {Transportation} via {Model} {Predictive} {Non}-{Sliding} {Manipulation} {Control}.
+\newblock {\em IEEE Transactions on Control Systems Technology}, 31(5):2231--2244, September 2023.
+
+\bibitem{heins_keep_2023}
+Adam Heins and Angela~P. Schoellig.
+\newblock Keep it {Upright}: {Model} {Predictive} {Control} for {Nonprehensile} {Object} {Transportation} with {Obstacle} {Avoidance} on a {Mobile} {Manipulator}.
+\newblock {\em IEEE Robotics and Automation Letters}, 8(12):7986--7993, December 2023.
+\newblock arXiv:2305.17484 [cs].
+
+\bibitem{jankowski_robust_2025}
+Julius Jankowski, Lara Brudermüller, Nick Hawes, and Sylvain Calinon.
+\newblock Robust pushing: {Exploiting} quasi-static belief dynamics and contact-informed optimization.
+\newblock {\em The International Journal of Robotics Research}, page 02783649251318046, February 2025.
+
+\bibitem{xu_densephysnet_2019}
+Zhenjia Xu, Jiajun Wu, Andy Zeng, Joshua~B. Tenenbaum, and Shuran Song.
+\newblock {DensePhysNet}: {Learning} {Dense} {Physical} {Object} {Representations} via {Multi}-step {Dynamic} {Interactions}, June 2019.
+\newblock arXiv:1906.03853 [cs].
+
+\bibitem{wang_phys2real_2026}
+Maggie Wang, Stephen Tian, Aiden Swann, Ola Shorinwa, Jiajun Wu, and Mac Schwager.
+\newblock {Phys2Real}: {Fusing} {VLM} {Priors} with {Interactive} {Online} {Adaptation} for {Uncertainty}-{Aware} {Sim}-to-{Real} {Manipulation}, March 2026.
+\newblock arXiv:2510.11689 [cs.RO].
+
+\bibitem{lynch_manipulation_1992}
+K.M. Lynch, H.~Maekawa, and K.~Tanie.
+\newblock Manipulation {And} {Active} {Sensing} {By} {Pushing} {Using} {Tactile} {Feedback}.
+\newblock In {\em Proceedings of the {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems}}, volume~1, pages 416--421, Raleigh, NC, 1992. IEEE.
+
+\bibitem{zhou_pushing_nodate}
+Jiaji Zhou and Matthew~T Mason.
+\newblock Pushing revisited: {Differential} ﬂatness, trajectory planning and stabilization.
+
+\bibitem{lynch_dynamic_1996}
+K.M. Lynch and M.T. Mason.
+\newblock Dynamic underactuated nonprehensile manipulation.
+\newblock In {\em Proceedings of {IEEE}/{RSJ} {International} {Conference} on {Intelligent} {Robots} and {Systems}. {IROS} '96}, volume~2, pages 889--896, Osaka, Japan, 1996. IEEE.
 
 \end{thebibliography}
