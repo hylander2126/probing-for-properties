@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex main"] 1792174128.53019 "main.aux" "main.bbl" "main" 1792174140.55785 0
+["bibtex main"] 1792525688.93872 "main.aux" "main.bbl" "main" 1792525816.54317 0
   "./references.bib" 1789505648 137428 c1daee6de43a083fa80145e2e4d313d3 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/unsrt.bst" 1292289607 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1792174139.85197 31233 88c96f6830dbf04c283ae1358f49e97a "pdflatex"
+  "main.aux" 1792525816.09319 27888 1f919e308a7f82e3da5e4543a2ef2357 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1792174128.7966 "/home/hylander/Documents/probing-for-properties/main.tex" "main.pdf" "main" 1792174140.55831 0
+["pdflatex"] 1792525808.88501 "/home/hylander/Documents/probing-for-properties/main.tex" "main.pdf" "main" 1792525816.54345 0
   "/etc/texmf/web2c/texmf.cnf" 1783366694.85438 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/hylander/Documents/probing-for-properties/main.tex" 1792174099.43256 103608 244284f1028ed85dbf0b6a7bb6a9bd1b ""
+  "/home/hylander/Documents/probing-for-properties/main.tex" 1792525808.55041 103919 57ad57e4b142bf0586a683e9f5f2157b ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -187,19 +187,16 @@
   "figures/fig6_tradeoff.png" 1789505648 157133 a64ac47057defba345513bd819714c05 ""
   "figures/fig7_inset_window.png" 1789505648 38378 54cc44f6c7b34edf09648c9e93ce0d03 ""
   "figures/flowchart_new.png" 1790053418.52763 996917 88833978369ee4390da5e9aceff1b1fa ""
-  "figures/lineup.png" 1792165348.70361 3007668 3e05502028c78216259019c2f9bfda9f ""
-  "figures/pipeline.png" 1789505648 96039 b0da47d3e7b8f0c893b16eb65013d442 ""
-  "figures/press-selection.jpg" 1789656733.97884 65063 b593409c13c99d27eeccec9f9da2c7b6 ""
+  "figures/lineup.png" 1792421197.59306 3002228 639747dcf8227ff8ca0e6fdad5592d3b ""
   "figures/runtime_logs/contact_friction_diagnostic.png" 1792174072.08828 383568 4db89b8abca9e4f15dd0940952d3d34a ""
   "figures/runtime_logs/fwd_tip_fits.png" 1792174072.09028 282816 7d5fa2438aee3ae7e4e6cc902e4b9ca2 ""
   "figures/runtime_logs/torque_curves.png" 1792174072.09328 273385 f01b4d40d6562a7f4586df35b485ea5b ""
-  "figures/safety_cases.png" 1789505648 228162 2a1335e72ef3c68fd07767fd2006f133 ""
   "figures/shove_validation.jpg" 1789505648 328739 f62c84d5a6c35917016b1370d51e1994 ""
   "figures/zoom.png" 1789505648 187228 63bc6cc605ca961bb4b8780a5e3fb526 ""
-  "main.aux" 1792174139.85197 31233 88c96f6830dbf04c283ae1358f49e97a "pdflatex"
-  "main.bbl" 1792174128.78486 8079 00dbf183e0644d1941b0e55f5612293e "bibtex main"
-  "main.out" 1792174139.85497 7830 7f0c3821272c1764a17a20379a4a4448 "pdflatex"
-  "main.tex" 1792174099.43256 103608 244284f1028ed85dbf0b6a7bb6a9bd1b ""
+  "main.aux" 1792525816.09319 27888 1f919e308a7f82e3da5e4543a2ef2357 "pdflatex"
+  "main.bbl" 1792525689.12264 8079 00dbf183e0644d1941b0e55f5612293e "bibtex main"
+  "main.out" 1792525816.09519 7830 7f0c3821272c1764a17a20379a4a4448 "pdflatex"
+  "main.tex" 1792525808.55041 103919 57ad57e4b142bf0586a683e9f5f2157b ""
   (generated)
   "main.aux"
   "main.log"

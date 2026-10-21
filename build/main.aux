@@ -3,43 +3,190 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{unsrt}
-\newlabel{fig:hazards}{{I}{1}{Introduction}{section.1}{}}
-\newlabel{fig:pipeline}{{III}{1}{Background}{section.3}{}}
+\citation{mason_mechanics_1986,bauza_probabilistic_2017,hyland_predicting_2023}
+\citation{hyland_before_2026}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
 \newlabel{sec:intro}{{I}{1}{Introduction}{section.1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {II}Prior Work}{1}{section.2}\protected@file@percent }
-\newlabel{sec:prior}{{II}{1}{Prior Work}{section.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Background}{1}{section.3}\protected@file@percent }
-\newlabel{sec:background}{{III}{1}{Background}{section.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Choosing the Contact and the Mode}{1}{section.4}\protected@file@percent }
-\newlabel{sec:contact_mode}{{IV}{1}{Choosing the Contact and the Mode}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Pull Direction and Press-Point Selection}{1}{subsection.4.1}\protected@file@percent }
-\newlabel{sec:press_point_selection}{{\mbox  {IV-A}}{1}{Pull Direction and Press-Point Selection}{subsection.4.1}{}}
-\newlabel{eq:press_feasible_set}{{2}{1}{Pull Direction and Press-Point Selection}{equation.4.2}{}}
-\newlabel{eq:press_point_torque}{{4}{1}{Pull Direction and Press-Point Selection}{equation.4.4}{}}
-\newlabel{eq:score}{{5}{1}{Pull Direction and Press-Point Selection}{equation.4.5}{}}
-\newlabel{eq:press_point_selection}{{6}{1}{Pull Direction and Press-Point Selection}{equation.4.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Forward-Tipping Contact Selection}{1}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:forward_tip_selection}{{\mbox  {IV-B}}{1}{Forward-Tipping Contact Selection}{subsection.4.2}{}}
-\newlabel{eq:forward_tip_selection}{{7}{1}{Forward-Tipping Contact Selection}{equation.4.7}{}}
+\citation{hyland_before_2026}
+\citation{hyland_predicting_2023,hyland_onboard_2025}
+\citation{atkeson_rigid_1985,khosla_parameter_1985}
+\citation{kubus_-line_2007,sundaralingam_-hand_2021}
+\citation{mavrakis_estimation_2020}
+\citation{mason_mechanics_1986,lynch_estimating_1993,bauza_probabilistic_2017}
+\citation{bauza_probabilistic_2017}
+\citation{heins_force_2024}
+\citation{dutta_push_2023}
+\citation{sundaralingam_-hand_2021}
+\citation{kim_online_2025}
+\citation{lynch_estimating_1993}
+\citation{yong_yu_estimation_1999,yong_yu_estimation_2001,yong_yu_estimation_2005}
+\citation{hyland_before_2026}
+\citation{heins_robust_2025}
+\citation{selvaggio_non-prehensile_2023,heins_keep_2023}
+\citation{jankowski_robust_2025}
+\citation{xu_densephysnet_2019}
+\citation{wang_phys2real_2026}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces The four pieces of the paper and what backs each one.}}{2}{table.1}\protected@file@percent }
+\newlabel{tab:contributions}{{I}{2}{The four pieces of the paper and what backs each one}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {II}Prior Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:prior}{{II}{2}{Prior Work}{section.2}{}}
+\citation{hyland_before_2026}
+\citation{yong_yu_estimation_1999}
+\citation{mason_mechanics_1986,lynch_manipulation_1992}
+\citation{zhou_pushing_nodate}
+\citation{lynch_dynamic_1996}
+\citation{heins_robust_2025}
+\citation{hyland_before_2026}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Background}{3}{section.3}\protected@file@percent }
+\newlabel{sec:background}{{III}{3}{Background}{section.3}{}}
+\newlabel{eq:torque_balance}{{1}{3}{Background}{equation.3.1}{}}
+\newlabel{eq:thresholds}{{2}{3}{Background}{equation.3.2}{}}
+\newlabel{eq:adjoint}{{3}{3}{Background}{equation.3.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Problem Statement and Scope}{3}{section.4}\protected@file@percent }
+\newlabel{sec:scope}{{IV}{3}{Problem Statement and Scope}{section.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Choosing the Contact and the Mode}{3}{section.5}\protected@file@percent }
+\newlabel{sec:contact_mode}{{V}{3}{Choosing the Contact and the Mode}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Pull Direction and Press-Point Selection}{3}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:press_point_selection}{{\mbox  {V-A}}{3}{Pull Direction and Press-Point Selection}{subsection.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The full pipeline. (1) Observe and probe: from a partial point cloud the robot reasons about support geometry, candidate contacts, and base roundness, and a low planar push measures sliding resistance. (2) Select, tip, and estimate: the mode heuristic (stable pivot? tip before slide? press point usable?) chooses forward tipping or press-and-pull, the interaction runs inside a mode-specific safety margin, and one shared estimator recovers $m$, the CoM, and $\mu _t$ with uncertainty. (3) Plan and validate a task: a feasibility check asks whether the estimates are accurate enough for the task, a physics-informed shove chooses contact height, intensity, and release, and predicted outcomes are compared against observed ones.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:flowchart}{{1}{4}{The full pipeline. (1) Observe and probe: from a partial point cloud the robot reasons about support geometry, candidate contacts, and base roundness, and a low planar push measures sliding resistance. (2) Select, tip, and estimate: the mode heuristic (stable pivot? tip before slide? press point usable?) chooses forward tipping or press-and-pull, the interaction runs inside a mode-specific safety margin, and one shared estimator recovers $m$, the CoM, and $\mu _t$ with uncertainty. (3) Plan and validate a task: a feasibility check asks whether the estimates are accurate enough for the task, a physics-informed shove chooses contact height, intensity, and release, and predicted outcomes are compared against observed ones}{figure.1}{}}
+\newlabel{eq:press_feasible_set}{{5}{4}{Pull Direction and Press-Point Selection}{equation.5.5}{}}
+\newlabel{eq:press_point_torque}{{7}{4}{Pull Direction and Press-Point Selection}{equation.5.7}{}}
+\newlabel{eq:score}{{8}{4}{Pull Direction and Press-Point Selection}{equation.5.8}{}}
+\newlabel{eq:press_point_selection}{{9}{4}{Pull Direction and Press-Point Selection}{equation.5.9}{}}
+\newlabel{sec:press_demand}{{\mbox  {V-A}1}{4}{Accounting for the press itself}{subsubsection.5.1.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {\mbox  {V-A}1}Accounting for the press itself}{4}{subsubsection.5.1.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Working assumptions, where they come from, and what evidence the paper reports for each. Reasonable approximations are not automatically conservative: a filled hull or nominal friction can overestimate feasibility, so these are modeling approximations, not safety guarantees.}}{5}{table.2}\protected@file@percent }
+\newlabel{tab:assumptions}{{II}{5}{Working assumptions, where they come from, and what evidence the paper reports for each. Reasonable approximations are not automatically conservative: a filled hull or nominal friction can overestimate feasibility, so these are modeling approximations, not safety guarantees}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Press point selection objectives and constraints.}}{5}{table.3}\protected@file@percent }
+\newlabel{tab:press_objectives}{{III}{5}{Press point selection objectives and constraints}{table.3}{}}
+\newlabel{eq:pp_onset}{{10}{5}{Accounting for the press itself}{equation.5.10}{}}
+\newlabel{eq:pp_normalized}{{11}{5}{Accounting for the press itself}{equation.5.11}{}}
+\newlabel{eq:press_demand}{{12}{5}{Accounting for the press itself}{equation.5.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Tipping direction and press-point selection. (\textbf  {left}) Support-footprint geometry, viewed from above, for representative pivot cases. For a straight-edge pivot, the desired tipping axis $\hat  {\mathbf  e}$ is aligned with the edge and the pull direction $\hat  {\mathbf  d}$ is chosen approximately normal to it. For a vertex or locally curved support boundary, contact reduces to a single expected pivot point and $\hat  {\mathbf  e}$ is taken as the local tangent to the support boundary. (\textbf  {right}) Press-point selection on a segmented object point cloud $\mathcal  {P}$, shown for the pull direction $\hat  {\mathbf  d} = \hat  {\mathbf  d}_{\mathrm  {pull}}$. Candidate points are first screened by the surface-normal condition in Eq.~\eqref  {eq:press_feasible_set} to reject contacts likely to separate under the commanded pull. For each remaining point, the lever arm $\mathbf  r_i$ and resulting moment $\boldsymbol  {\tau }_i = \mathbf  r_i \times \hat  {\mathbf  d}$ are evaluated. The selected point $\mathbf  p^*$ maximizes the signed moment about the desired tipping axis according to Eq.~\eqref  {eq:press_point_selection}. Forward tipping reuses the same construction at $\hat  {\mathbf  d}_{\mathrm  {push}}$ (Section~\ref {sec:forward_tip_selection}).}}{6}{figure.2}\protected@file@percent }
+\newlabel{fig:contact_selection}{{2}{6}{Tipping direction and press-point selection. (\textbf {left}) Support-footprint geometry, viewed from above, for representative pivot cases. For a straight-edge pivot, the desired tipping axis $\hat {\mathbf e}$ is aligned with the edge and the pull direction $\hat {\mathbf d}$ is chosen approximately normal to it. For a vertex or locally curved support boundary, contact reduces to a single expected pivot point and $\hat {\mathbf e}$ is taken as the local tangent to the support boundary. (\textbf {right}) Press-point selection on a segmented object point cloud $\mathcal {P}$, shown for the pull direction $\hat {\mathbf d} = \hat {\mathbf d}_{\mathrm {pull}}$. Candidate points are first screened by the surface-normal condition in Eq.~\eqref {eq:press_feasible_set} to reject contacts likely to separate under the commanded pull. For each remaining point, the lever arm $\mathbf r_i$ and resulting moment $\boldsymbol {\tau }_i = \mathbf r_i \times \hat {\mathbf d}$ are evaluated. The selected point $\mathbf p^*$ maximizes the signed moment about the desired tipping axis according to Eq.~\eqref {eq:press_point_selection}. Forward tipping reuses the same construction at $\hat {\mathbf d}_{\mathrm {push}}$ (Section~\ref {sec:forward_tip_selection})}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Forward-Tipping Contact Selection}{6}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:forward_tip_selection}{{\mbox  {V-B}}{6}{Forward-Tipping Contact Selection}{subsection.5.2}{}}
+\newlabel{eq:forward_tip_selection}{{13}{6}{Forward-Tipping Contact Selection}{equation.5.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Interaction-Mode Selection}{6}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:mode_selection}{{\mbox  {V-C}}{6}{Interaction-Mode Selection}{subsection.5.3}{}}
+\citation{hyland_before_2026}
+\newlabel{eq:mode_selection}{{14}{7}{Interaction-Mode Selection}{equation.5.14}{}}
+\newlabel{eq:cost}{{16}{7}{Interaction-Mode Selection}{equation.5.16}{}}
+\citation{atkeson_rigid_1985}
+\citation{yong_yu_estimation_1999}
+\citation{hyland_predicting_2023}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Failure $\rightarrow $ next attempt. Every outcome is detected from signals already logged by the controllers.}}{8}{table.4}\protected@file@percent }
+\newlabel{tab:cascade}{{IV}{8}{Failure $\rightarrow $ next attempt. Every outcome is detected from signals already logged by the controllers}{table.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}One Estimator for Both Modes}{8}{section.6}\protected@file@percent }
+\newlabel{sec:estimation}{{VI}{8}{One Estimator for Both Modes}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}What a single tip can identify}{8}{subsection.6.1}\protected@file@percent }
+\newlabel{sec:identifiability}{{\mbox  {VI-A}}{8}{What a single tip can identify}{subsection.6.1}{}}
+\newlabel{eq:tau_model}{{17}{8}{What a single tip can identify}{equation.6.17}{}}
+\newlabel{eq:lambda_invariance}{{18}{8}{What a single tip can identify}{equation.6.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Estimation methods}{8}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Vision for the mode, touch for the amount}{9}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Friction}{9}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}An observability gate that needs no prior}{9}{subsection.6.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Keeping the Interaction Safe}{9}{section.7}\protected@file@percent }
+\newlabel{sec:method}{{VII}{9}{Keeping the Interaction Safe}{section.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Normal and tangential balances at the table contact during press-and-pull. As $\theta $ grows, the maintained press acquires a world-horizontal component $F_{\mathrm  {press}}\sin \theta $ that adds to the tangential load. \textcolor {orange}{SH: Show the friction cone in this figure?}}}{9}{figure.3}\protected@file@percent }
+\newlabel{fig:zoom}{{3}{9}{Normal and tangential balances at the table contact during press-and-pull. As $\theta $ grows, the maintained press acquires a world-horizontal component $F_{\mathrm {press}}\sin \theta $ that adds to the tangential load. \sh {Show the friction cone in this figure?}}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-A}}Problem setup}{9}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-B}}Two contacts, one governing hazard}{9}{subsection.7.2}\protected@file@percent }
+\newlabel{eq:m_topple}{{19}{10}{Two contacts, one governing hazard}{equation.7.19}{}}
+\newlabel{eq:Nt}{{20}{10}{Two contacts, one governing hazard}{equation.7.20}{}}
+\newlabel{eq:ft}{{21}{10}{Two contacts, one governing hazard}{equation.7.21}{}}
+\newlabel{eq:m_slip}{{22}{10}{Two contacts, one governing hazard}{equation.7.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-C}}The coupling and the safe press band}{10}{subsection.7.3}\protected@file@percent }
+\newlabel{eq:press_band}{{23}{10}{The coupling and the safe press band}{equation.7.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-D}}Admissible interaction set and slip margin}{10}{subsection.7.4}\protected@file@percent }
+\newlabel{eq:eta}{{24}{10}{Admissible interaction set and slip margin}{equation.7.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-E}}Forward tipping: stopping rule and why it cannot cross}{10}{subsection.7.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-F}}Safety--accuracy tradeoff}{11}{subsection.7.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-G}}Estimation conditioning and the press band}{11}{subsection.7.7}\protected@file@percent }
+\newlabel{sec:conditioning}{{\mbox  {VII-G}}{11}{Estimation conditioning and the press band}{subsection.7.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VII-H}}Covariance-coupled margin}{11}{subsection.7.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Uncertainty: From Measurements to Estimates}{11}{section.8}\protected@file@percent }
+\newlabel{sec:uncertainty}{{VIII}{11}{Uncertainty: From Measurements to Estimates}{section.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IX}Experiments, Results, and Discussion}{11}{section.9}\protected@file@percent }
+\newlabel{sec:results}{{IX}{11}{Experiments, Results, and Discussion}{section.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-A}}Experimental setup}{11}{subsection.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-B}}Objects}{11}{subsection.9.2}\protected@file@percent }
+\citation{hyland_before_2026}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Input error sources, their models, and how each is obtained. Values from the 2026-10-09 hardware checks and the 2026-10-15/16 forward-tip audit.}}{12}{table.5}\protected@file@percent }
+\newlabel{tab:error_sources}{{V}{12}{Input error sources, their models, and how each is obtained. Values from the 2026-10-09 hardware checks and the 2026-10-15/16 forward-tip audit}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-C}}Protocol}{12}{subsection.9.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Object set. (a) CoM variation (Tip-T): one exterior, five slug placements. (b) Base fillet radius (cylinder), sharp to fully round. (c) Pivot geometry (heart): point and edge contacts. (d) Benchmark and everyday objects. \textcolor {orange}{SH: Update the Tip-T labels to the current GT: $T_1$ (30, 82.47), $T_2$ (30, 99.4), $T_3$ (30, 122.0), $T_4$ (7.4, 122.0), $T_5$ (52.6, 122.0)\,mm; the figure still shows the old CAD heights 84.67/101.6/124.2. Add the friction series row.}}}{12}{figure.4}\protected@file@percent }
+\newlabel{fig:lineup}{{4}{12}{Object set. (a) CoM variation (Tip-T): one exterior, five slug placements. (b) Base fillet radius (cylinder), sharp to fully round. (c) Pivot geometry (heart): point and edge contacts. (d) Benchmark and everyday objects. \sh {Update the Tip-T labels to the current GT: $T_1$ (30, 82.47), $T_2$ (30, 99.4), $T_3$ (30, 122.0), $T_4$ (7.4, 122.0), $T_5$ (52.6, 122.0)\,mm; the figure still shows the old CAD heights 84.67/101.6/124.2. Add the friction series row.}}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces What the object did, labeled by the side camera, against the proprioceptive pipeline (tipT a--e, 2026-10-13).}}{13}{table.6}\protected@file@percent }
+\newlabel{tab:vision_labels}{{VI}{13}{What the object did, labeled by the side camera, against the proprioceptive pipeline (tipT a--e, 2026-10-13)}{table.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-D}}Preliminary results: forward tipping on the Tip-T}{13}{subsection.9.4}\protected@file@percent }
+\newlabel{sec:prelim}{{\mbox  {IX-D}}{13}{Preliminary results: forward tipping on the Tip-T}{subsection.9.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Repeatability and the mass deficit on tipT\_c (GT 404\,g, $d = 30$\,mm, $z_c = 122$\,mm). Method D as currently implemented.}}{13}{table.7}\protected@file@percent }
+\newlabel{tab:bias}{{VII}{13}{Repeatability and the mass deficit on tipT\_c (GT 404\,g, $d = 30$\,mm, $z_c = 122$\,mm). Method D as currently implemented}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Estimation results on physical objects. \textcolor {orange}{SH: Fill from data; add $m r$, mode chosen, and attempts.}}}{13}{table.8}\protected@file@percent }
+\newlabel{tab:results}{{VIII}{13}{Estimation results on physical objects. \sh {Fill from data; add $m r$, mode chosen, and attempts.}}{table.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-E}}Multi-modal accuracy}{13}{subsection.9.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-F}}Where the method stops working}{13}{subsection.9.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Forward tipping, torque about the pivot against tilt for tipT a--c. Method D fits on the push (blue) and return (gray) branches, torque against vision tilt (orange), and the ground-truth curve (dotted). tipT\_a slid 35\,mm before tipping and still produced a usable fit. \textcolor {orange}{SH: Source: runtime\_logs/tipT\_full\_suite/estimation\_fwd\_tip/fwd\_tip\_fits.png. Regenerate with the frozen estimator and current GT (the legend still shows the old GT masses).}}}{14}{figure.5}\protected@file@percent }
+\newlabel{fig:fwd_tip_fits}{{5}{14}{Forward tipping, torque about the pivot against tilt for tipT a--c. Method D fits on the push (blue) and return (gray) branches, torque against vision tilt (orange), and the ground-truth curve (dotted). tipT\_a slid 35\,mm before tipping and still produced a usable fit. \sh {Source: runtime\_logs/tipT\_full\_suite/estimation\_fwd\_tip/fwd\_tip\_fits.png. Regenerate with the frozen estimator and current GT (the legend still shows the old GT masses).}}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Measured pivot torque against onset-referenced tilt for the tipT\_c repeats, against the ground-truth curve under vertical gravity. The deficit is systematic across repeats. \textcolor {orange}{SH: Source: runtime\_logs/tipT\_bias\_audit/torque\_curves.png. Drop the temporary two-slug panel for the paper.}}}{14}{figure.6}\protected@file@percent }
+\newlabel{fig:torque_curves}{{6}{14}{Measured pivot torque against onset-referenced tilt for the tipT\_c repeats, against the ground-truth curve under vertical gravity. The deficit is systematic across repeats. \sh {Source: runtime\_logs/tipT\_bias\_audit/torque\_curves.png. Drop the temporary two-slug panel for the paper.}}{figure.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-G}}Mode choice and contact placement}{14}{subsection.9.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-H}}Safety framework validation}{14}{subsection.9.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Contact-force direction on the assumed planar face: signed tangential over normal force at the fingertip, push (blue) and return (orange). The ratio stays within about $\pm 0.4$, inside the fingertip's friction cone, supporting the sliding-ball contact model used for proprioceptive tilt. This is a friction diagnostic, not an independently measured coefficient. \textcolor {orange}{SH: Source: runtime\_logs/tipT\_bias\_audit/contact\_friction\_diagnostic.png. Optional; supplementary material?}}}{14}{figure.7}\protected@file@percent }
+\newlabel{fig:contact_friction}{{7}{14}{Contact-force direction on the assumed planar face: signed tangential over normal force at the fingertip, push (blue) and return (orange). The ratio stays within about $\pm 0.4$, inside the fingertip's friction cone, supporting the sliding-ball contact model used for proprioceptive tilt. This is a friction diagnostic, not an independently measured coefficient. \sh {Source: runtime\_logs/tipT\_bias\_audit/contact\_friction\_diagnostic.png. Optional; supplementary material?}}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Parametric sweeps. Estimation error versus (a) CoM offset, (b) base fillet radius, and (c) pivot geometry. \textcolor {orange}{SH: PLACEHOLDER with synthetic data: replace with campaign data, and add (d) base friction.}}}{14}{figure.8}\protected@file@percent }
+\newlabel{fig:sweeps}{{8}{14}{Parametric sweeps. Estimation error versus (a) CoM offset, (b) base fillet radius, and (c) pivot geometry. \sh {PLACEHOLDER with synthetic data: replace with campaign data, and add (d) base friction.}}{figure.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-I}}Complete-pipeline demonstration}{14}{subsection.9.9}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Safety--accuracy tradeoff. (left) Estimation error versus the certified margin. (right) Per-arc margins $\lambda _{\mathrm  {topple}}(\theta )$ and $\lambda _{\mathrm  {slip}}(\theta )$, illustrating objects whose slip budget admits crossing $\theta ^{*}$ and objects where the slip limit binds first. \textcolor {orange}{SH: PLACEHOLDER with synthetic data. Relabel the x-axis $\eta _{\mathrm  {slip}}$ (not $\eta _{\mathrm  {safety}}$) to match the renamed margin.}}}{15}{figure.9}\protected@file@percent }
+\newlabel{fig:tradeoff}{{9}{15}{Safety--accuracy tradeoff. (left) Estimation error versus the certified margin. (right) Per-arc margins $\lambda _{\mathrm {topple}}(\theta )$ and $\lambda _{\mathrm {slip}}(\theta )$, illustrating objects whose slip budget admits crossing $\theta ^{*}$ and objects where the slip limit binds first. \sh {PLACEHOLDER with synthetic data. Relabel the x-axis $\eta _{\mathrm {slip}}$ (not $\eta _{\mathrm {safety}}$) to match the renamed margin.}}{figure.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IX-J}}Comparison}{15}{subsection.9.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {X}Validation: Parameter-Gated Dynamic Shoving}{15}{section.10}\protected@file@percent }
+\newlabel{sec:validation}{{X}{15}{Validation: Parameter-Gated Dynamic Shoving}{section.10}{}}
+\newlabel{eq:shove_force}{{25}{15}{Validation: Parameter-Gated Dynamic Shoving}{equation.10.25}{}}
+\newlabel{eq:cop}{{26}{15}{Validation: Parameter-Gated Dynamic Shoving}{equation.10.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Parameter-gated shove-to-region validation. Uninformed geometry-only push heuristics fail in distinct ways on a high-CoM, non-uniform object: a base push tips it backward (the high CoM lags), a top push topples it forward (base friction pins the bottom), and a centroid push chatters because the true CoM is offset from the geometric centroid. The informed push, inside the estimated no-tip window, slides the object into the target. (inset) The admissible push-height window. \textcolor {orange}{SH: From the old draft and illustrative (the ISRR shove video was simulated); replace with hardware frames.}}}{15}{figure.10}\protected@file@percent }
+\newlabel{fig:shove}{{10}{15}{Parameter-gated shove-to-region validation. Uninformed geometry-only push heuristics fail in distinct ways on a high-CoM, non-uniform object: a base push tips it backward (the high CoM lags), a top push topples it forward (base friction pins the bottom), and a centroid push chatters because the true CoM is offset from the geometric centroid. The informed push, inside the estimated no-tip window, slides the object into the target. (inset) The admissible push-height window. \sh {From the old draft and illustrative (the ISRR shove video was simulated); replace with hardware frames.}}{figure.10}{}}
+\newlabel{eq:hwindow}{{27}{15}{Validation: Parameter-Gated Dynamic Shoving}{equation.10.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Predicted coast-phase outcome for three Tip-T configurations with one exterior. With $\mu _t \approx 0.16$ and $z_c = 122$\,mm, \eqref  {eq:coast_gate} requires $d_f \ge 19.5$\,mm.}}{16}{table.9}\protected@file@percent }
+\newlabel{tab:coast_pred}{{IX}{16}{Predicted coast-phase outcome for three Tip-T configurations with one exterior. With $\mu _t \approx 0.16$ and $z_c = 122$\,mm, \eqref {eq:coast_gate} requires $d_f \ge 19.5$\,mm}{table.9}{}}
+\newlabel{eq:sigma_window}{{28}{16}{Validation: Parameter-Gated Dynamic Shoving}{equation.10.28}{}}
+\newlabel{eq:coast_gate}{{29}{16}{Validation: Parameter-Gated Dynamic Shoving}{equation.10.29}{}}
+\newlabel{eq:lambda_tip}{{30}{16}{Validation: Parameter-Gated Dynamic Shoving}{equation.10.30}{}}
+\newlabel{eq:eta_shove}{{31}{16}{Validation: Parameter-Gated Dynamic Shoving}{equation.10.31}{}}
 \citation{hyland_before_2026}
 \bibdata{references.bib}
-\bibcite{hyland_before_2026}{1}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Tipping direction and press-point selection. (\textbf  {left}) Support-footprint geometry, viewed from above, for representative pivot cases. For a straight-edge pivot, the desired tipping axis $\hat  {\mathbf  e}$ is aligned with the edge and the pull direction $\hat  {\mathbf  d}$ is chosen approximately normal to it. For a vertex or locally curved support boundary, contact reduces to a single expected pivot point and $\hat  {\mathbf  e}$ is taken as the local tangent to the support boundary. (\textbf  {right}) Press-point selection on a segmented object point cloud $\mathcal  {P}$, shown for the pull direction $\hat  {\mathbf  d} = \hat  {\mathbf  d}_{\mathrm  {pull}}$. Candidate points are first screened by the surface-normal condition in Eq.~\eqref  {eq:press_feasible_set} to reject contacts likely to separate under the commanded pull. For each remaining point, the lever arm $\mathbf  r_i$ and resulting moment $\boldsymbol  {\tau }_i = \mathbf  r_i \times \hat  {\mathbf  d}$ are evaluated. The selected point $\mathbf  p^*$ maximizes the signed moment about the desired tipping axis according to Eq.~\eqref  {eq:press_point_selection}. Forward tipping reuses the same construction at $\hat  {\mathbf  d}_{\mathrm  {push}}$ (Section~\ref {sec:forward_tip_selection}).}}{2}{figure.1}\protected@file@percent }
-\newlabel{fig:contact_selection}{{1}{2}{Tipping direction and press-point selection. (\textbf {left}) Support-footprint geometry, viewed from above, for representative pivot cases. For a straight-edge pivot, the desired tipping axis $\hat {\mathbf e}$ is aligned with the edge and the pull direction $\hat {\mathbf d}$ is chosen approximately normal to it. For a vertex or locally curved support boundary, contact reduces to a single expected pivot point and $\hat {\mathbf e}$ is taken as the local tangent to the support boundary. (\textbf {right}) Press-point selection on a segmented object point cloud $\mathcal {P}$, shown for the pull direction $\hat {\mathbf d} = \hat {\mathbf d}_{\mathrm {pull}}$. Candidate points are first screened by the surface-normal condition in Eq.~\eqref {eq:press_feasible_set} to reject contacts likely to separate under the commanded pull. For each remaining point, the lever arm $\mathbf r_i$ and resulting moment $\boldsymbol {\tau }_i = \mathbf r_i \times \hat {\mathbf d}$ are evaluated. The selected point $\mathbf p^*$ maximizes the signed moment about the desired tipping axis according to Eq.~\eqref {eq:press_point_selection}. Forward tipping reuses the same construction at $\hat {\mathbf d}_{\mathrm {push}}$ (Section~\ref {sec:forward_tip_selection})}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Mode Selection}{2}{subsection.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {V}Keeping the Interaction Safe}{2}{section.5}\protected@file@percent }
-\newlabel{sec:method}{{V}{2}{Keeping the Interaction Safe}{section.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Experiments, Results, and Discussion}{2}{section.6}\protected@file@percent }
-\newlabel{sec:results}{{VI}{2}{Experiments, Results, and Discussion}{section.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Validation: Parameter-Gated Dynamic Shoving}{2}{section.7}\protected@file@percent }
-\newlabel{sec:validation}{{VII}{2}{Validation: Parameter-Gated Dynamic Shoving}{section.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusions}{2}{section.8}\protected@file@percent }
-\newlabel{sec:conclusion}{{VIII}{2}{Conclusions}{section.8}{}}
-\@writefile{toc}{\contentsline {section}{References}{2}{section*.1}\protected@file@percent }
-\newlabel{fig:zoom}{{V}{3}{Keeping the Interaction Safe}{section.5}{}}
-\newlabel{fig:lineup}{{VI}{3}{Experiments, Results, and Discussion}{section.6}{}}
-\newlabel{fig:sweeps}{{VI}{3}{Experiments, Results, and Discussion}{section.6}{}}
-\newlabel{fig:tradeoff}{{VI}{3}{Experiments, Results, and Discussion}{section.6}{}}
-\newlabel{fig:shove}{{VII}{3}{Validation: Parameter-Gated Dynamic Shoving}{section.7}{}}
-\gdef \@abspage@last{3}
+\bibcite{mason_mechanics_1986}{1}
+\bibcite{bauza_probabilistic_2017}{2}
+\bibcite{hyland_predicting_2023}{3}
+\bibcite{hyland_before_2026}{4}
+\bibcite{hyland_onboard_2025}{5}
+\bibcite{atkeson_rigid_1985}{6}
+\bibcite{khosla_parameter_1985}{7}
+\bibcite{kubus_-line_2007}{8}
+\bibcite{sundaralingam_-hand_2021}{9}
+\bibcite{mavrakis_estimation_2020}{10}
+\bibcite{lynch_estimating_1993}{11}
+\bibcite{heins_force_2024}{12}
+\bibcite{dutta_push_2023}{13}
+\bibcite{kim_online_2025}{14}
+\bibcite{yong_yu_estimation_1999}{15}
+\bibcite{yong_yu_estimation_2001}{16}
+\bibcite{yong_yu_estimation_2005}{17}
+\@writefile{toc}{\contentsline {section}{\numberline {XI}Limitations}{17}{section.11}\protected@file@percent }
+\newlabel{sec:limitations}{{XI}{17}{Limitations}{section.11}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {XII}Conclusions}{17}{section.12}\protected@file@percent }
+\newlabel{sec:conclusion}{{XII}{17}{Conclusions}{section.12}{}}
+\@writefile{toc}{\contentsline {section}{References}{17}{section*.1}\protected@file@percent }
+\bibcite{heins_robust_2025}{18}
+\bibcite{selvaggio_non-prehensile_2023}{19}
+\bibcite{heins_keep_2023}{20}
+\bibcite{jankowski_robust_2025}{21}
+\bibcite{xu_densephysnet_2019}{22}
+\bibcite{wang_phys2real_2026}{23}
+\bibcite{lynch_manipulation_1992}{24}
+\bibcite{zhou_pushing_nodate}{25}
+\bibcite{lynch_dynamic_1996}{26}
+\gdef \@abspage@last{18}

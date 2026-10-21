@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.7.6)  17 SEP 2026 16:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.7.6)  20 OCT 2026 15:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -544,24 +544,24 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 (build/main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
 
 -- Lines per column: 57 (approximate, difference = 2.56499pt).
 *geometry* driver: auto-detecting
@@ -628,7 +628,7 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 57.
+Package hyperref Info: Link coloring ON on input line 67.
 
 (build/main.out) (build/main.out
 pdfTeX warning (Object streams): \pdfobjcompresslevel > 0 requires PDF-1.5 or g
@@ -637,29 +637,23 @@ reater. Object streams disabled now.
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-<figures/safety_cases.png, id=51, 855.6768pt x 592.614pt>
-File: figures/safety_cases.png Graphic file (type png)
-<use figures/safety_cases.png>
-Package pdftex.def Info: figures/safety_cases.png  used on input line 77.
-(pdftex.def)             Requested size: 234.59698pt x 162.46748pt.
-<figures/pipeline.png, id=53, 548.7702pt x 279.444pt>
-File: figures/pipeline.png Graphic file (type png)
-<use figures/pipeline.png>
-Package pdftex.def Info: figures/pipeline.png  used on input line 91.
-(pdftex.def)             Requested size: 234.59698pt x 119.45927pt.
-<figures/contact_selection.png, id=54, 1177.39874pt x 840.89156pt>
-File: figures/contact_selection.png Graphic file (type png)
-<use figures/contact_selection.png>
-Package pdftex.def Info: figures/contact_selection.png  used on input line 103.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 7
+2.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 2111) in paragraph at lines 72--72
+[][][]\OT1/ptm/m/n/8 The au-thors are af-fil-i-ated with the Robotics En-gi-nee
+r-ing De-part-
+ []
 
-(pdftex.def)             Requested size: 480.59395pt x 343.24088pt.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 106
-.
- (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 90.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 106
-.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 90.
+
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -667,40 +661,243 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 f-dist/fonts/enc/dvips/base/8r.enc}
 
 
- <./figures/safety_cases.png> <./figures/pipeline.png>]
-<figures/zoom.png, id=98, 751.608pt x 654.7662pt>
+]
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+[]\OT1/ptm/m/n/9 Contact-placement
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+\OT1/ptm/m/n/9 ab-la-tion; mode choice
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 126--126
+[]\OT1/ptm/m/n/9 Keeping the in-ter-ac-tion
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
+[]\OT1/ptm/m/n/9 Degradation curves and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
+\OT1/ptm/m/n/9 break-down points per
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
+\OT1/ptm/m/n/9 swept axis; un-cer-tainty
+ []
+
+
+Underfull \hbox (badness 2894) in paragraph at lines 128--128
+[]\OT1/ptm/m/n/9 The num-bers are worth
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 128--129
+[]\OT1/ptm/m/n/9 Predicted vs. ob-served
+ []
+
+
+Overfull \hbox (1.42407pt too wide) in paragraph at lines 121--131
+ [][] 
+ []
+
+[2]
+<figures/flowchart_new.png, id=246, 2221.098pt x 1301.8236pt>
+File: figures/flowchart_new.png Graphic file (type png)
+<use figures/flowchart_new.png>
+Package pdftex.def Info: figures/flowchart_new.png  used on input line 163.
+(pdftex.def)             Requested size: 480.59395pt x 281.6744pt.
+
+
+LaTeX Warning: Reference `fig:hazards' on page 3 undefined on input line 191.
+
+
+Underfull \hbox (badness 2865) in paragraph at lines 223--224
+[]\OT1/ptm/m/n/9 Fit resid-u-als, push/return dis-agree-ment, side-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 224--224
+[]\OT1/ptm/m/n/9 Estimates are ac-cu-rate
+ []
+
+<figures/contact_selection.png, id=250, 1177.39874pt x 840.89156pt>
+File: figures/contact_selection.png Graphic file (type png)
+<use figures/contact_selection.png>
+Package pdftex.def Info: figures/contact_selection.png  used on input line 237.
+
+(pdftex.def)             Requested size: 480.59395pt x 343.24088pt.
+[3]
+Underfull \hbox (badness 4967) in paragraph at lines 329--329
+[]\OT1/ptm/m/n/9 Close to the pivot
+ []
+
+
+Underfull \hbox (badness 4072) in paragraph at lines 331--331
+[]\OT1/ptm/m/n/9 Inside the ob-served
+ []
+
+
+Underfull \hbox (badness 2707) in paragraph at lines 332--332
+[]\OT1/ptm/m/n/9 Reachable, collision-
+ []
+
+[4 <./figures/flowchart_new.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5]
+[6 <./figures/contact_selection.png>]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
+11.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 427--428
+[]\OT1/ptm/m/n/9 Counted as suc-cess; op-tion-ally
+ []
+
+[7] [8]
+<figures/zoom.png, id=353, 751.608pt x 654.7662pt>
 File: figures/zoom.png Graphic file (type png)
 <use figures/zoom.png>
-Package pdftex.def Info: figures/zoom.png  used on input line 242.
+Package pdftex.def Info: figures/zoom.png  used on input line 490.
 (pdftex.def)             Requested size: 234.59698pt x 204.36415pt.
-<figures/lineup.png, id=99, 1644.8652pt x 1571.1498pt>
+ [9 <./figures/zoom.png>]
+Underfull \hbox (badness 3179) in paragraph at lines 513--514
+\OT1/ptm/b/n/10 Object--table slip-page. \OT1/ptm/m/n/10 The ta-ble con-tact sl
+ips when
+ []
+
+
+Overfull \hbox (26.36523pt too wide) detected at line 534
+[][][]\OMS/cmsy/m/n/10 F[] \OT1/cmr/m/n/10 = [] :  []\OML/cmm/m/it/10 ;  []
+ []
+
+[10]
+Underfull \hbox (badness 8075) in paragraph at lines 588--589
+\OT1/ptm/b/n/10 Propagation. \OT1/ptm/m/n/10 Three com-ple-men-tary routes. (i)
+ An-a-
+ []
+
+[11]
+<figures/lineup.png, id=394, 1721.4714pt x 2221.5798pt>
 File: figures/lineup.png Graphic file (type png)
 <use figures/lineup.png>
-Package pdftex.def Info: figures/lineup.png  used on input line 252.
-(pdftex.def)             Requested size: 234.59698pt x 224.08296pt.
-<figures/fig5_sweeps.png, id=100, 508.5399pt x 142.3719pt>
+Package pdftex.def Info: figures/lineup.png  used on input line 611.
+(pdftex.def)             Requested size: 234.59698pt x 302.7478pt.
+ [12 <./figures/lineup.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 635--636
+[]\OT1/ptm/b/n/9 Proprioceptive
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 637--637
+[]\OT1/ptm/m/n/9 Slid 34.7mm, then
+ []
+
+
+Underfull \hbox (badness 6741) in paragraph at lines 637--638
+[]\OT1/ptm/m/n/9 Finger travel be-fore
+ []
+
+
+Underfull \hbox (badness 4569) in paragraph at lines 637--638
+\OT1/ptm/m/n/9 on-set 35.3mm, then
+ []
+
+
+Underfull \hbox (badness 5316) in paragraph at lines 639--639
+[]\OT1/ptm/m/n/9 Tipped to $\OT1/cmr/m/n/9 10\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 3[
+]$\OT1/ptm/m/n/9 , no
+ []
+
+
+Underfull \hbox (badness 5316) in paragraph at lines 641--641
+[]\OT1/ptm/m/n/9 Tipped to $\OT1/cmr/m/n/9 13\OML/cmm/m/it/9 :\OT1/cmr/m/n/9 9[
+]$\OT1/ptm/m/n/9 , no
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 641--642
+[]\OT1/ptm/m/n/9 Contact not found
+ []
+
+<figures/runtime_logs/fwd_tip_fits.png, id=404, 1119.382pt x 295.1025pt>
+File: figures/runtime_logs/fwd_tip_fits.png Graphic file (type png)
+<use figures/runtime_logs/fwd_tip_fits.png>
+Package pdftex.def Info: figures/runtime_logs/fwd_tip_fits.png  used on input l
+ine 650.
+(pdftex.def)             Requested size: 480.59395pt x 126.69797pt.
+<figures/runtime_logs/torque_curves.png, id=407, 939.51pt x 578.16pt>
+File: figures/runtime_logs/torque_curves.png Graphic file (type png)
+<use figures/runtime_logs/torque_curves.png>
+Package pdftex.def Info: figures/runtime_logs/torque_curves.png  used on input 
+line 678.
+(pdftex.def)             Requested size: 234.59698pt x 144.3632pt.
+
+Underfull \hbox (badness 5403) in paragraph at lines 679--679
+\OT1/ptm/m/n/8 Fig. 6.  []Measured pivot torque against onset-referenced tilt f
+or
+ []
+
+
+Underfull \hbox (badness 5548) in paragraph at lines 679--679
+\OT1/ptm/m/n/8 the tipT[]c re-peats, against the ground-truth curve un-der ver-
+ti-cal
+ []
+
+
+Underfull \hbox (badness 2443) in paragraph at lines 679--679
+\OT1/ptm/m/n/8 grav-ity. The deficit is sys-tem-atic across re-peats. []SH: Sou
+rce: run-
+ []
+
+<figures/runtime_logs/contact_friction_diagnostic.png, id=410, 1228.59pt x 939.
+51pt>
+File: figures/runtime_logs/contact_friction_diagnostic.png Graphic file (type p
+ng)
+<use figures/runtime_logs/contact_friction_diagnostic.png>
+Package pdftex.def Info: figures/runtime_logs/contact_friction_diagnostic.png  
+used on input line 687.
+(pdftex.def)             Requested size: 234.59698pt x 179.39757pt.
+[13]
+<figures/fig5_sweeps.png, id=423, 508.5399pt x 142.3719pt>
 File: figures/fig5_sweeps.png Graphic file (type png)
 <use figures/fig5_sweeps.png>
-Package pdftex.def Info: figures/fig5_sweeps.png  used on input line 258.
+Package pdftex.def Info: figures/fig5_sweeps.png  used on input line 717.
 (pdftex.def)             Requested size: 234.59698pt x 65.67868pt.
-<figures/fig6_tradeoff.png, id=101, 515.2851pt x 174.6525pt>
+<figures/fig6_tradeoff.png, id=424, 515.2851pt x 174.6525pt>
 File: figures/fig6_tradeoff.png Graphic file (type png)
 <use figures/fig6_tradeoff.png>
-Package pdftex.def Info: figures/fig6_tradeoff.png  used on input line 264.
+Package pdftex.def Info: figures/fig6_tradeoff.png  used on input line 730.
 (pdftex.def)             Requested size: 234.59698pt x 79.51497pt.
-<figures/shove_validation.jpg, id=102, 1072.005pt x 1050.8058pt>
+ [14 <./figures/runtime_logs/fwd_tip_fits.png> <./figures/runtime_logs/torque_c
+urves.png> <./figures/runtime_logs/contact_friction_diagnostic.png> <./figures/
+fig5_sweeps.png>]
+<figures/shove_validation.jpg, id=435, 1072.005pt x 1050.8058pt>
 File: figures/shove_validation.jpg Graphic file (type jpg)
 <use figures/shove_validation.jpg>
-Package pdftex.def Info: figures/shove_validation.jpg  used on input line 274.
+Package pdftex.def Info: figures/shove_validation.jpg  used on input line 749.
 (pdftex.def)             Requested size: 242.00504pt x 237.20677pt.
-<figures/fig7_inset_window.png, id=103, 145.9854pt x 172.4844pt>
+<figures/fig7_inset_window.png, id=436, 145.9854pt x 172.4844pt>
 File: figures/fig7_inset_window.png Graphic file (type png)
 <use figures/fig7_inset_window.png>
-Package pdftex.def Info: figures/fig7_inset_window.png  used on input line 276.
+Package pdftex.def Info: figures/fig7_inset_window.png  used on input line 751.
 
 (pdftex.def)             Requested size: 148.16849pt x 175.06323pt.
+ [15 <./figures/fig6_tradeoff.png> <./figures/shove_validation.jpg> <./figures/
+fig7_inset_window.png>]
+Overfull \hbox (11.61604pt too wide) in paragraph at lines 794--803
+ [][] 
+ []
 
-(build/main.bbl)
+[16] (build/main.bbl [17])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -712,47 +909,59 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2 <./figures/contact_selection.png>] [3 <./figures/zoom.png> <./figures/lineup
-.png> <./figures/fig5_sweeps.png> <./figures/fig6_tradeoff.png> <./figures/shov
-e_validation.jpg> <./figures/fig7_inset_window.png>] (build/main.aux)
+[18
+
+] (build/main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 637216B14A8530F9F86AF5A7057A50A4;2028.
+(rerunfilecheck)             Checksum: 7F0C3821272C1764A17A20379A4A4448;7830.
  ) 
 Here is how much of TeX's memory you used:
- 12986 strings out of 474222
- 202165 string characters out of 5748734
- 1950975 words of memory out of 5000000
- 34992 multiletter control sequences out of 15000+600000
- 602337 words of font info for 133 fonts, out of 8000000 for 9000
+ 13306 strings out of 474222
+ 207733 string characters out of 5748734
+ 1952975 words of memory out of 5000000
+ 35184 multiletter control sequences out of 15000+600000
+ 610289 words of font info for 149 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,10n,79p,1429b,448s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,12n,79p,1922b,581s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-r6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on build/main.pdf (3 pages, 3115996 bytes).
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on build/main.pdf (18 pages, 6390584 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 25 named destinations out of 1000 (max. 500000)
- 142 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 628 PDF objects out of 1000 (max. 8388607)
+ 135 named destinations out of 1000 (max. 500000)
+ 376 words of extra memory for PDF output out of 10000 (max. 10000000)
 

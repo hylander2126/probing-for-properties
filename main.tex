@@ -69,6 +69,8 @@
 \author{Steven M. Hyland, Jing Xiao, and Cagdas D. Onal \\ \thanks{The authors are affiliated with the Robotics Engineering Department, Worcester Polytechnic Institute, MA 01609, USA. Correspondence: \texttt{smhyland@wpi.edu}.}}
 
 \maketitle
+\pagestyle{plain}
+\thispagestyle{plain}
 
 \begin{abstract}
 % NOTE: results-agnostic. Fill the orange placeholders from the journal experiments.
@@ -91,12 +93,14 @@ While the parameters cannot be seen, they can be probed. Non-prehensile primitiv
 
 Those papers left the questions that decide whether non-prehensile estimation is usable on an object nobody has characterized: where to place the contact, which tipping mode will actually work, how hard to press and how far to tip without losing control of the object, where the method stops working, and whether the recovered numbers are good enough to act on. The ISRR paper gives rules for the press point without reasoning or validation, and lists a feasible object set without quantitatively characterizing its boundaries. \sh{ISRR named three extensions and left two questions open; this paper delivers four of those five, leaving only object compliance (liquid estimation) for future work. List them explicitly here.}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/safety_cases.png}
-  \caption{The two hazards of press-and-pull tipping. (a) Toppling: past the toppling angle $\theta^{*}$ the CoM crosses the pivot and gravity continues the rotation. (b) Bottom slip: a low $\mu_t$, a large press $F_{\mathrm{press}}$, or a large tip angle $\theta$ drives the base to slide. We show in Section~\ref{sec:method} that (a) is a consequence of (b), so only slip needs to be certified. \sh{Figure is from the old draft; keep, but check notation matches $\eta_{\mathrm{slip}}$.}}
-  \label{fig:hazards}
-\end{figure}
+
+% THIS FIGURE IS NO LONGER REALLY APPLICABLE. WE ARE NOT PURELY ANALYZING PRESS-PULL TIPPING...
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{figures/safety_cases.png}
+%   \caption{The two hazards of press-and-pull tipping. (a) Toppling: past the toppling angle $\theta^{*}$ the CoM crosses the pivot and gravity continues the rotation. (b) Bottom slip: a low $\mu_t$, a large press $F_{\mathrm{press}}$, or a large tip angle $\theta$ drives the base to slide. We show in Section~\ref{sec:method} that (a) is a consequence of (b), so only slip needs to be certified. \sh{Figure is from the old draft; keep, but check notation matches $\eta_{\mathrm{slip}}$.}}
+%   \label{fig:hazards}
+% \end{figure}
 
 \noindent\textbf{The claim, in one sentence.} A robot can decide where to touch an unknown object, which non-prehensile primitive will work on it, and how far it can safely drive that primitive, using only a point cloud and a wrench signal, with no shape model and nothing learned, and the parameters it recovers this way are accurate enough to plan a dynamic task whose failure modes are predicted in advance.
 
@@ -161,12 +165,13 @@ This section recaps the forward-tipping and press-and-pull models from \iros{} a
   \label{fig:flowchart}
 \end{figure*}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.95\linewidth]{figures/pipeline.png}
-  \caption{Multi-modal pipeline (old draft). A planar slide caches the product $\mu_t m$ and supplies planar CoM $(x_c, y_c)$; press-and-pull tipping recovers $(m, z_c)$ via nonlinear least squares on the wrench balance; friction is then recovered in closed form. \sh{SUPERSEDED by Fig.~\ref{fig:flowchart}; delete this figure (and figures/fig2\_pipeline.png, its synthetic twin) once the flowchart is accepted.}}
-  \label{fig:pipeline}
-\end{figure}
+% DEPRECATED IN FAVOR OF NEW FLOWCHART
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{figures/pipeline.png}
+%   \caption{Multi-modal pipeline (old draft). A planar slide caches the product $\mu_t m$ and supplies planar CoM $(x_c, y_c)$; press-and-pull tipping recovers $(m, z_c)$ via nonlinear least squares on the wrench balance; friction is then recovered in closed form. \sh{SUPERSEDED by Fig.~\ref{fig:flowchart}; delete this figure (and figures/fig2\_pipeline.png, its synthetic twin) once the flowchart is accepted.}}
+%   \label{fig:pipeline}
+% \end{figure}
 
 \noindent \textbf{Forward tipping.} Let $\{O\}$ be the object frame located on the pivot edge and $\varphi$ the object's out-of-plane rotation about that edge. A horizontal push at height $h$ tips the object about the far edge. At a fixed pivot the quasistatic torque balance
 \begin{equation}
@@ -236,12 +241,13 @@ The research question is: \emph{given a stated feasible object set, can existing
   \label{fig:contact_selection}
 \end{figure*}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.85\linewidth]{figures/press-selection.jpg}
-  \caption{The three press-point preferences, in order: (1) a contact-face normal that does not lean away from the pull, to keep fingertip traction; (2) the candidate closest to the pivot along the pull direction, to minimize the resistive press torque; (3) the tallest point on the object, to maximize tipping leverage. Eq.~\eqref{eq:press_demand} trades (2) against (3) through fingertip friction. \sh{New figure; decide whether it replaces the right panel of Fig.~\ref{fig:contact_selection} or sits beside it.}}
-  \label{fig:press_selection}
-\end{figure}
+% OFFICIAL AND MORE RIGOROUS VERSION PROVIDED BY CONTACT_SELECTION FIGURE. THIS ONE IS DEPRECATED.
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.85\linewidth]{figures/press-selection.jpg}
+%   \caption{The three press-point preferences, in order: (1) a contact-face normal that does not lean away from the pull, to keep fingertip traction; (2) the candidate closest to the pivot along the pull direction, to minimize the resistive press torque; (3) the tallest point on the object, to maximize tipping leverage. Eq.~\eqref{eq:press_demand} trades (2) against (3) through fingertip friction. \sh{New figure; decide whether it replaces the right panel of Fig.~\ref{fig:contact_selection} or sits beside it.}}
+%   \label{fig:press_selection}
+% \end{figure}
 
 The interaction direction is selected from the expected tipping geometry (Fig.~\ref{fig:contact_selection}, left). We write $\hat{\mathbf d}$ for the commanded direction in the support plane, instantiated as the pull direction $\hat{\mathbf d}_{\mathrm{pull}}$ here and as the push direction
 $\hat{\mathbf d}_{\mathrm{push}}$ for forward tipping (Section~\ref{sec:forward_tip_selection}). For an object expected to rotate about a straight tipping edge with unit direction $\hat{\mathbf e}$, $\hat{\mathbf d}$ is chosen approximately normal to the edge and parallel to the support surface. For objects with a locally curved support boundary and a single expected pivot point, $\hat{\mathbf d}$ is instead chosen approximately normal to the local tangent of the support boundary at the pivot. The sign of $\hat{\mathbf d}$ is selected to induce rotation in the desired tipping direction.
